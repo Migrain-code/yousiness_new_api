@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'admin',
-        'passwords' => 'admin',
+        'guard' => 'business',
+        'passwords' => 'business',
     ],
 
     /*
@@ -36,12 +36,16 @@ return [
     */
 
     'guards' => [
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admin',
-        ],
         'business' => [
-            'driver' => 'session',
+            'driver' => 'passport',
+            'provider' => 'business',
+        ],
+        'personal' => [
+            'driver' => 'passport',
+            'provider' => 'personal',
+        ],
+        'api' => [
+            'driver' => 'passport',
             'provider' => 'business',
         ],
     ],
@@ -72,10 +76,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Business::class,
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'personal' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Personel::class,
+        ],
     ],
 
     /*
@@ -94,14 +98,8 @@ return [
     */
 
     'passwords' => [
-        'admin' => [
-            'provider' => 'admin',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'customer' => [
-            'provider' => 'customer',
+        'personal' => [
+            'provider' => 'personal',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

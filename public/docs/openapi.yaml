@@ -1,0 +1,590 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8001'
+paths:
+  /api/business/auth/login:
+    post:
+      summary: 'POST api/auth/login'
+      operationId: pOSTApiauthlogin
+      description: "Status Codes\n<ul>\n<li>phone</li>\n<li>password</li>\n<li> 401 Unauthorized Hatası </li>\n</ul>\nLogin apisi"
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: ''
+                  example: inventore
+                password:
+                  type: string
+                  description: ''
+                  example: HpfljG
+              required:
+                - phone
+                - password
+      security: []
+  /api/business/auth/check-phone:
+    post:
+      summary: 'POST api/auth/check-phone'
+      operationId: pOSTApiauthcheckPhone
+      description: "<ul>\n<li>phone | string | required</li>\n</ul>\ntelefon numarası kontrol apisi"
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      security: []
+  /api/business/auth/verify:
+    post:
+      summary: 'POST api/auth/verify'
+      operationId: pOSTApiauthverify
+      description: "<ul>\n<li>code | string | required | Doğrulama Kodu</li>\n<li>phone | string | required | Kullanıcı Telefon Numarası</li>\n<li>name | string | required | Kullanıcı Adı</li>\n<li>business_name | string | required | İşletme Adı</li>\n<li>phone | string | required</li>\n</ul>\nKod doğrulama ve kullanıcı kayıt apisi"
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      security: []
+  /api/business/auth/user:
+    get:
+      summary: 'GET api/auth/user'
+      operationId: gETApiauthuser
+      description: "<ul>\n<li>Token Göndermeniz Yeterli</li>\n</ul>\nLogout apisi"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Authentication
+      security: []
+  /api/business/auth/logout:
+    post:
+      summary: 'POST api/auth/logout'
+      operationId: pOSTApiauthlogout
+      description: "<ul>\n<li>Token Göndermeniz Yeterli</li>\n</ul>\nLogout apisi"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Authentication
+      security: []
+  /api/business/business-service:
+    get:
+      summary: 'GET api/business-service'
+      operationId: gETApibusinessService
+      description: "Hizmetlerin listesini döndürecek size buradaki hizmet listesinden seçilen hizmetlerden seçilen hizmet eklenecek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - BusinessService
+      security: []
+  /api/business/business-service/get:
+    post:
+      summary: 'POST api/business-service/get'
+      operationId: pOSTApibusinessServiceget
+      description: "id si gönderilen işletme hizmetinin bilgilerini getirecek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li>businessServiceId | required | güncellenecek hizmetin idsi</li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - BusinessService
+      security: []
+  /api/business/business-service/add:
+    post:
+      summary: 'POST api/business-service/add'
+      operationId: pOSTApibusinessServiceadd
+      description: "Hizmetlerin listesini döndürecek size buradaki hizmet listesinden seçilen hizmetlerden seçilen hizmet eklenecek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li> typeId |required | cinsiyet id si gelecek buradan  </li>\n<li> categoryId |required | hizmetin category id si gelecek buradan  </li>\n<li> subCategoryId |required | hizmetin sub_category id si gelecek buradan  </li>\n<li> time |required | hizmetin süresi gelecek buradan  </li>\n<li> price |required | hizmetin fiyatı gelecek buradan  </li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - BusinessService
+      security: []
+  /api/business/business-service/update:
+    post:
+      summary: 'POST api/business-service/update'
+      operationId: pOSTApibusinessServiceupdate
+      description: "id si gönderilen işletme hizmetinin bilgilerini güncelleyek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li>businessServiceId | required | güncellenecek hizmetin idsi</li>\n<li> typeId |required | cinsiyet id si gelecek buradan  </li>\n<li> categoryId |required | hizmetin category id si gelecek buradan  </li>\n<li> subCategoryId |required | hizmetin sub_category id si gelecek buradan  </li>\n<li> time |required | hizmetin süresi gelecek buradan  </li>\n<li> price |required | hizmetin fiyatı gelecek buradan  </li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - BusinessService
+      security: []
+  /api/business/business-service/delete:
+    post:
+      summary: 'POST api/business-service/delete'
+      operationId: pOSTApibusinessServicedelete
+      description: "id si gönderilen işletme hizmetinin bilgilerini getirecek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li>businessServiceId | required | güncellenecek hizmetin idsi</li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - BusinessService
+      security: []
+  /api/business/detail-setup/step-1/get:
+    get:
+      summary: ''
+      operationId: getApiBusinessDetailSetupStep1Get
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - DetailSetup
+      security: []
+  /api/business/detail-setup/step-1/update:
+    post:
+      summary: 'POST api/detail-setup/step-1/update'
+      operationId: pOSTApidetailSetupstep1update
+      description: "<ul>\n<li>Bearer Token</li>\n<li>officialName | string | required | Salon Sahibinin adı</li>\n<li>businessName | string | required | Salon Adı</li>\n<li>offDay | numeric | required | kapalı olduğu günün id si </li>\n<li>businessType | numeric | required | işletme türü id'si </li>\n<li>cityId  | string | required | Şehir</li>\n<li>districtId  | string | required | İlçe</li>\n<li>phone | string | required | İşletme Telefon Numarası</li>\n<li>email | string | required | İşletme E-posta Adresi</li>\n<li>commission | string | required | P. Kredi kartı kesintisi | örneğin (10, 20, 30,40)</li>\n<li>appointmentRange | string | required | Randevu aralığı | örneğin (10, 20, 30,40)</li>\n<li>personalCount | string | required | Personel Sayısı | örneğin (1, 3, 5,10)</li>\n<li>aboutText | string | required| İşletme Hakkında Yazısı</li>\n<li>startTime | string | required| İşletme Açılış Saati Örneğin (12:08)</li>\n<li>endTime | string | required| İşletme Kapanış Saati Örneğin (18:08)</li>\n<li>year | date | required| Kuruluş Tarihi örneğin (2023-04-01)</li>\n<li>address | text | required| Address Metni</li>\n</ul>\nDetaylı Kurulum Ekranı İşletme Bilgileri güncelleme Apisi"
+      parameters: []
+      responses: {  }
+      tags:
+        - DetailSetup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                officialName:
+                  type: string
+                  description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
+                  example: lc
+                businessName:
+                  type: string
+                  description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
+                  example: owrdhqhhvuovrrdvqklbc
+                appointmentRange:
+                  type: number
+                  description: ''
+                  example: 14866191.495
+                businessType:
+                  type: number
+                  description: ''
+                  example: 5661906.687391
+                phone:
+                  type: string
+                  description: 'value değeri 11 karakter değerinden büyük olmalıdır.'
+                  example: vpznyfycdixhluo
+                startTime:
+                  type: string
+                  description: ''
+                  example: aperiam
+                endTime:
+                  type: string
+                  description: ''
+                  example: dolorem
+                email:
+                  type: string
+                  description: ''
+                  example: aliza.waelchi@example.net
+                year:
+                  type: string
+                  description: 'value geçerli bir tarih olmalıdır.'
+                  example: '2023-10-21T15:18:00'
+                address:
+                  type: string
+                  description: ''
+                  example: quo
+                cityId:
+                  type: number
+                  description: ''
+                  example: 35805696.1
+                districtId:
+                  type: number
+                  description: ''
+                  example: 3956.5
+                commission:
+                  type: number
+                  description: ''
+                  example: 21164733.0
+                personalCount:
+                  type: number
+                  description: ''
+                  example: 135573.1
+                offDay:
+                  type: number
+                  description: ''
+                  example: 2394.04693308
+                aboutText:
+                  type: string
+                  description: ''
+                  example: ex
+              required:
+                - officialName
+                - businessName
+                - appointmentRange
+                - businessType
+                - phone
+                - startTime
+                - endTime
+                - email
+                - year
+                - address
+                - cityId
+                - districtId
+                - commission
+                - personalCount
+                - offDay
+                - aboutText
+      security: []
+  /api/business/payment:
+    get:
+      summary: 'GET api/payment'
+      operationId: gETApipayment
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n</ul>\nKullanıcını işletmesinin packet bilgisi ve kullanıcının cartları"
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Payment
+      security: []
+  /api/business/payment/pay:
+    post:
+      summary: 'POST api/payment/pay'
+      operationId: pOSTApipaymentpay
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>cart_id | numeric | required | Seçilen Kart Bilgisi</li>\n</ul>\nKullanıcını işletmesinin packet bilgisi ve kullanıcının cartları"
+      parameters: []
+      responses: {  }
+      tags:
+        - Payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cart_id:
+                  type: string
+                  description: 'value değeri 1 karakter değerinden büyük olmalıdır.'
+                  example: mmhsazjexpwl
+              required:
+                - cart_id
+      security: []
+  /api/business/personal:
+    get:
+      summary: 'GET api/personal'
+      operationId: gETApipersonal
+      description: "Personel listesini döndürecek size\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Personal
+      security: []
+  /api/business/personal/get:
+    post:
+      summary: 'POST api/personal/get'
+      operationId: pOSTApipersonalget
+      description: "id si gönderilen personelin getirecek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li>personalId | required | güncellenecek personel id si</li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Personal
+      security: []
+  /api/business/personal/add:
+    post:
+      summary: 'POST api/personal/add'
+      operationId: pOSTApipersonaladd
+      description: "Personel Ekleme pointi\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li> name |required | string | </li>\n<li> image |required | string | </li>\n<li> email |required | string | </li>\n<li> phone |required | string | </li>\n<li> password |required | string | </li>\n<li> approveType |required | numeric | örneğin 1 veya 0</li>\n<li> restDay |required | numeric | haftanın günlerinden herhangi bir günün id si</li>\n<li> startTime |required | string | örneğin 10:43 </li>\n<li> endTime |required | string | örneğin 10:43</li>\n<li> foodStart |required | string | örneğin 10:43</li>\n<li> foodEnd |required | string | örneğin 10:43</li>\n<li> gender |required | numeric | 1 => kadın,2 => erkek,3 => Unisex herhangi biri</li>\n<li> rate |required | numeric | 10 personel yüzdesi 10 = %10</li>\n<li> appointmentRange |required | numeric | randevu aralığı örneğin \"15\" dk bazında</li>\n<li> description |required | string</li>\n<li> services | required | array | eğer tümü seçeneği seçilirse \"all\" olarak gönderebilirsiniz dizi içerisinde</li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Personal
+      security: []
+  /api/business/personal/update:
+    post:
+      summary: 'POST api/personal/update'
+      operationId: pOSTApipersonalupdate
+      description: "Personel Güncelleme pointi\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li> personal_id | required | numeric</li>\n<li> name |required | string | personal adı</li>\n<li> image |required | string | personel görseli</li>\n<li> email |required | string | mail adresi</li>\n<li> phone |required | string | telefon numarası</li>\n<li> password |required | string | şifre</li>\n<li> approveType |required | numeric | örneğin 1 veya 0</li>\n<li> restDay |required | numeric | haftanın günlerinden herhangi bir günün id si</li>\n<li> startTime |required | string | örneğin 10:43 </li>\n<li> endTime |required | string | örneğin 10:43</li>\n<li> foodStart |required | string | örneğin 10:43</li>\n<li> foodEnd |required | string | örneğin 10:43</li>\n<li> gender |required | numeric | 1 => kadın,2 => erkek,3 => Unisex herhangi biri</li>\n<li> rate |required | numeric | 10 personel yüzdesi 10 = %10</li>\n<li> appointmentRange |required | numeric | randevu aralığı örneğin \"15\" dk bazında</li>\n<li> description |required | string</li>\n<li> services | required | array | eğer tümü seçeneği seçilirse \"all\" olarak gönderebilirsiniz dizi içerisinde</li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Personal
+      security: []
+  /api/business/personal/delete:
+    post:
+      summary: 'POST api/personal/get'
+      operationId: pOSTApipersonalget
+      description: "id si gönderilen personeli silecek\n<br> Gerekli alanlar\n<ul>\n<li> token </li>\n<li>personalId | required | silinecek personel id si</li>\n</ul>"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Personal
+      security: []
+  /api/personal/auth/login:
+    post:
+      summary: 'POST api/personal/auth/login'
+      operationId: pOSTApipersonalauthlogin
+      description: "Status Codes\n<ul>\n<li>phone</li>\n<li>password</li>\n<li> 401 Unauthorized Hatası </li>\n</ul>\nLogin apisi"
+      parameters: []
+      responses: {  }
+      tags:
+        - PersonalAuth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: ''
+                  example: ut
+                password:
+                  type: string
+                  description: ''
+                  example: 'h#zAKlZ0?F22a!H%cW5'
+              required:
+                - phone
+                - password
+      security: []
+  /api/personal/user:
+    get:
+      summary: 'GET api/personal/auth/user'
+      operationId: gETApipersonalauthuser
+      description: "<ul>\n<li>Token Göndermeniz Yeterli</li>\n</ul>\nUse Info apisi"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - PersonalAuth
+      security: []
+  /api/personal/logout:
+    post:
+      summary: 'POST api/personal/auth/logout'
+      operationId: pOSTApipersonalauthlogout
+      description: "<ul>\n<li>Token Göndermeniz Yeterli</li>\n</ul>\nLogout apisi"
+      parameters:
+        -
+          in: header
+          name: Bearer
+          description: ''
+          example: '{token}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - PersonalAuth
+      security: []
+  /api/business/setup/get:
+    get:
+      summary: 'GET api/setup'
+      operationId: gETApisetup
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n</ul>\nKayıt Ekranı Tüm Bilgiler Apisi"
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Setup
+      security: []
+  /api/business/setup/update:
+    post:
+      summary: 'POST api/setup/update'
+      operationId: pOSTApisetupupdate
+      description: "<ul>\n<li>Bearer Token | required | İşletme Kategorisi</li>\n<li>category_id | string | required | İşletme Kategorisi</li>\n<li>name | string | required | İşletme Adı</li>\n<li>type_id | string | required | Hizmet Türü businessTypes değişkeninden alabilirsiniz </li>\n<li>city_id  | string | required | Şehir</li>\n<li>district_id  | string | required | İlçe</li>\n<li>off_day_id  | string | required | Kapalı Olduğu Gün</li>\n<li>phone | string | required | Kullanıcı Telefon Numarası</li>\n<li>about_content | string | required| İşletme Hakkında Yazısı</li>\n<li>start_time | string | required| İşletme Açılış Saati Örneğin (12:08)</li>\n<li>end_time | string | required| İşletme Kapanış Saati Örneğin (18:08)</li>\n<li>latitude | string | required| Haritadan seçilen lat bilgisi</li>\n<li>longitude | string | required| Haritadan seçilen long bilgisi</li>\n<li>address | text | required| Address Metni</li>\n<li>package_id | integer or string | required| Seçili Paket idsi</li>\n</ul>\nKayıt Ekranı Tüm Bilgiler güncelleme Apisi"
+      parameters: []
+      responses: {  }
+      tags:
+        - Setup
+      security: []
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: BusinessService
+    description: ''
+  -
+    name: DetailSetup
+    description: ''
+  -
+    name: Payment
+    description: ''
+  -
+    name: Personal
+    description: ''
+  -
+    name: PersonalAuth
+    description: ''
+  -
+    name: Setup
+    description: ''

@@ -1,0 +1,3616 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://127.0.0.1:8001";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.25.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.25.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
+                </li>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-business-auth-login">
+                                <a href="#authentication-POSTapi-business-auth-login">POST api/auth/login</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-business-auth-check-phone">
+                                <a href="#authentication-POSTapi-business-auth-check-phone">POST api/auth/check-phone</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-business-auth-verify">
+                                <a href="#authentication-POSTapi-business-auth-verify">POST api/auth/verify</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-GETapi-business-auth-user">
+                                <a href="#authentication-GETapi-business-auth-user">GET api/auth/user</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-business-auth-logout">
+                                <a href="#authentication-POSTapi-business-auth-logout">POST api/auth/logout</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-businessservice" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="businessservice">
+                    <a href="#businessservice">BusinessService</a>
+                </li>
+                                    <ul id="tocify-subheader-businessservice" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="businessservice-GETapi-business-business-service">
+                                <a href="#businessservice-GETapi-business-business-service">GET api/business-service</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="businessservice-POSTapi-business-business-service-get">
+                                <a href="#businessservice-POSTapi-business-business-service-get">POST api/business-service/get</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="businessservice-POSTapi-business-business-service-add">
+                                <a href="#businessservice-POSTapi-business-business-service-add">POST api/business-service/add</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="businessservice-POSTapi-business-business-service-update">
+                                <a href="#businessservice-POSTapi-business-business-service-update">POST api/business-service/update</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="businessservice-POSTapi-business-business-service-delete">
+                                <a href="#businessservice-POSTapi-business-business-service-delete">POST api/business-service/delete</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-detailsetup" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="detailsetup">
+                    <a href="#detailsetup">DetailSetup</a>
+                </li>
+                                    <ul id="tocify-subheader-detailsetup" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="detailsetup-GETapi-business-detail-setup-step-1-get">
+                                <a href="#detailsetup-GETapi-business-detail-setup-step-1-get">GET api/business/detail-setup/step-1/get</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="detailsetup-POSTapi-business-detail-setup-step-1-update">
+                                <a href="#detailsetup-POSTapi-business-detail-setup-step-1-update">POST api/detail-setup/step-1/update</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-payment" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="payment">
+                    <a href="#payment">Payment</a>
+                </li>
+                                    <ul id="tocify-subheader-payment" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="payment-GETapi-business-payment">
+                                <a href="#payment-GETapi-business-payment">GET api/payment</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-POSTapi-business-payment-pay">
+                                <a href="#payment-POSTapi-business-payment-pay">POST api/payment/pay</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-personal" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="personal">
+                    <a href="#personal">Personal</a>
+                </li>
+                                    <ul id="tocify-subheader-personal" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="personal-GETapi-business-personal">
+                                <a href="#personal-GETapi-business-personal">GET api/personal</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="personal-POSTapi-business-personal-get">
+                                <a href="#personal-POSTapi-business-personal-get">POST api/personal/get</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="personal-POSTapi-business-personal-add">
+                                <a href="#personal-POSTapi-business-personal-add">POST api/personal/add</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="personal-POSTapi-business-personal-update">
+                                <a href="#personal-POSTapi-business-personal-update">POST api/personal/update</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="personal-POSTapi-business-personal-delete">
+                                <a href="#personal-POSTapi-business-personal-delete">POST api/personal/get</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-personalauth" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="personalauth">
+                    <a href="#personalauth">PersonalAuth</a>
+                </li>
+                                    <ul id="tocify-subheader-personalauth" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="personalauth-POSTapi-personal-auth-login">
+                                <a href="#personalauth-POSTapi-personal-auth-login">POST api/personal/auth/login</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="personalauth-GETapi-personal-user">
+                                <a href="#personalauth-GETapi-personal-user">GET api/personal/auth/user</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="personalauth-POSTapi-personal-logout">
+                                <a href="#personalauth-POSTapi-personal-logout">POST api/personal/auth/logout</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-setup" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="setup">
+                    <a href="#setup">Setup</a>
+                </li>
+                                    <ul id="tocify-subheader-setup" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="setup-GETapi-business-setup-get">
+                                <a href="#setup-GETapi-business-setup-get">GET api/setup</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="setup-POSTapi-business-setup-update">
+                                <a href="#setup-POSTapi-business-setup-update">POST api/setup/update</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: October 21, 2023</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://127.0.0.1:8001</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="authentication">Authentication</h1>
+
+    
+
+                                <h2 id="authentication-POSTapi-business-auth-login">POST api/auth/login</h2>
+
+<p>
+</p>
+
+<p>Status Codes</p>
+<ul>
+<li>phone</li>
+<li>password</li>
+<li> 401 Unauthorized Hatası </li>
+</ul>
+<p>Login apisi</p>
+
+<span id="example-requests-POSTapi-business-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"phone\": \"inventore\",
+    \"password\": \"HpfljG\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "phone": "inventore",
+    "password": "HpfljG"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-auth-login">
+</span>
+<span id="execution-results-POSTapi-business-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-auth-login"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-auth-login">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-auth-login" data-method="POST"
+      data-path="api/business/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-auth-login"
+                    onclick="tryItOut('POSTapi-business-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-auth-login"
+                    onclick="cancelTryOut('POSTapi-business-auth-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-auth-login"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/auth/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-auth-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-auth-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-business-auth-login"
+               value="inventore"
+               data-component="body">
+    <br>
+<p>Example: <code>inventore</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-business-auth-login"
+               value="HpfljG"
+               data-component="body">
+    <br>
+<p>Example: <code>HpfljG</code></p>
+        </div>
+        </form>
+
+                    <h2 id="authentication-POSTapi-business-auth-check-phone">POST api/auth/check-phone</h2>
+
+<p>
+</p>
+
+<ul>
+<li>phone | string | required</li>
+</ul>
+<p>telefon numarası kontrol apisi</p>
+
+<span id="example-requests-POSTapi-business-auth-check-phone">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/auth/check-phone" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/auth/check-phone"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-auth-check-phone">
+</span>
+<span id="execution-results-POSTapi-business-auth-check-phone" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-auth-check-phone"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-auth-check-phone"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-auth-check-phone" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-auth-check-phone">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-auth-check-phone" data-method="POST"
+      data-path="api/business/auth/check-phone"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-auth-check-phone', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-auth-check-phone"
+                    onclick="tryItOut('POSTapi-business-auth-check-phone');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-auth-check-phone"
+                    onclick="cancelTryOut('POSTapi-business-auth-check-phone');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-auth-check-phone"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/auth/check-phone</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-auth-check-phone"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-auth-check-phone"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="authentication-POSTapi-business-auth-verify">POST api/auth/verify</h2>
+
+<p>
+</p>
+
+<ul>
+<li>code | string | required | Doğrulama Kodu</li>
+<li>phone | string | required | Kullanıcı Telefon Numarası</li>
+<li>name | string | required | Kullanıcı Adı</li>
+<li>business_name | string | required | İşletme Adı</li>
+<li>phone | string | required</li>
+</ul>
+<p>Kod doğrulama ve kullanıcı kayıt apisi</p>
+
+<span id="example-requests-POSTapi-business-auth-verify">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/auth/verify" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/auth/verify"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-auth-verify">
+</span>
+<span id="execution-results-POSTapi-business-auth-verify" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-auth-verify"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-auth-verify"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-auth-verify" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-auth-verify">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-auth-verify" data-method="POST"
+      data-path="api/business/auth/verify"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-auth-verify', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-auth-verify"
+                    onclick="tryItOut('POSTapi-business-auth-verify');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-auth-verify"
+                    onclick="cancelTryOut('POSTapi-business-auth-verify');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-auth-verify"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/auth/verify</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-auth-verify"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-auth-verify"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="authentication-GETapi-business-auth-user">GET api/auth/user</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Token Göndermeniz Yeterli</li>
+</ul>
+<p>Logout apisi</p>
+
+<span id="example-requests-GETapi-business-auth-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/business/auth/user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/auth/user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-business-auth-user">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-business-auth-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-business-auth-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-business-auth-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-business-auth-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-business-auth-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-business-auth-user" data-method="GET"
+      data-path="api/business/auth/user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-business-auth-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-business-auth-user"
+                    onclick="tryItOut('GETapi-business-auth-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-business-auth-user"
+                    onclick="cancelTryOut('GETapi-business-auth-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-business-auth-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/business/auth/user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-business-auth-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-business-auth-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="GETapi-business-auth-user"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="authentication-POSTapi-business-auth-logout">POST api/auth/logout</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Token Göndermeniz Yeterli</li>
+</ul>
+<p>Logout apisi</p>
+
+<span id="example-requests-POSTapi-business-auth-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/auth/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/auth/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-auth-logout">
+</span>
+<span id="execution-results-POSTapi-business-auth-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-auth-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-auth-logout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-auth-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-auth-logout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-auth-logout" data-method="POST"
+      data-path="api/business/auth/logout"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-auth-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-auth-logout"
+                    onclick="tryItOut('POSTapi-business-auth-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-auth-logout"
+                    onclick="cancelTryOut('POSTapi-business-auth-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-auth-logout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/auth/logout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-auth-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-auth-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-auth-logout"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                <h1 id="businessservice">BusinessService</h1>
+
+    
+
+                                <h2 id="businessservice-GETapi-business-business-service">GET api/business-service</h2>
+
+<p>
+</p>
+
+<p>Hizmetlerin listesini döndürecek size buradaki hizmet listesinden seçilen hizmetlerden seçilen hizmet eklenecek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+</ul>
+
+<span id="example-requests-GETapi-business-business-service">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/business/business-service" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/business-service"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-business-business-service">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-business-business-service" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-business-business-service"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-business-business-service"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-business-business-service" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-business-business-service">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-business-business-service" data-method="GET"
+      data-path="api/business/business-service"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-business-business-service', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-business-business-service"
+                    onclick="tryItOut('GETapi-business-business-service');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-business-business-service"
+                    onclick="cancelTryOut('GETapi-business-business-service');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-business-business-service"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/business/business-service</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-business-business-service"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-business-business-service"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="GETapi-business-business-service"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="businessservice-POSTapi-business-business-service-get">POST api/business-service/get</h2>
+
+<p>
+</p>
+
+<p>id si gönderilen işletme hizmetinin bilgilerini getirecek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li>businessServiceId | required | güncellenecek hizmetin idsi</li>
+</ul>
+
+<span id="example-requests-POSTapi-business-business-service-get">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/business-service/get" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/business-service/get"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-business-service-get">
+</span>
+<span id="execution-results-POSTapi-business-business-service-get" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-business-service-get"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-business-service-get"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-business-service-get" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-business-service-get">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-business-service-get" data-method="POST"
+      data-path="api/business/business-service/get"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-business-service-get', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-business-service-get"
+                    onclick="tryItOut('POSTapi-business-business-service-get');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-business-service-get"
+                    onclick="cancelTryOut('POSTapi-business-business-service-get');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-business-service-get"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/business-service/get</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-business-service-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-business-service-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-business-service-get"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="businessservice-POSTapi-business-business-service-add">POST api/business-service/add</h2>
+
+<p>
+</p>
+
+<p>Hizmetlerin listesini döndürecek size buradaki hizmet listesinden seçilen hizmetlerden seçilen hizmet eklenecek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li> typeId |required | cinsiyet id si gelecek buradan  </li>
+<li> categoryId |required | hizmetin category id si gelecek buradan  </li>
+<li> subCategoryId |required | hizmetin sub_category id si gelecek buradan  </li>
+<li> time |required | hizmetin süresi gelecek buradan  </li>
+<li> price |required | hizmetin fiyatı gelecek buradan  </li>
+</ul>
+
+<span id="example-requests-POSTapi-business-business-service-add">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/business-service/add" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/business-service/add"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-business-service-add">
+</span>
+<span id="execution-results-POSTapi-business-business-service-add" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-business-service-add"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-business-service-add"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-business-service-add" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-business-service-add">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-business-service-add" data-method="POST"
+      data-path="api/business/business-service/add"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-business-service-add', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-business-service-add"
+                    onclick="tryItOut('POSTapi-business-business-service-add');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-business-service-add"
+                    onclick="cancelTryOut('POSTapi-business-business-service-add');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-business-service-add"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/business-service/add</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-business-service-add"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-business-service-add"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-business-service-add"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="businessservice-POSTapi-business-business-service-update">POST api/business-service/update</h2>
+
+<p>
+</p>
+
+<p>id si gönderilen işletme hizmetinin bilgilerini güncelleyek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li>businessServiceId | required | güncellenecek hizmetin idsi</li>
+<li> typeId |required | cinsiyet id si gelecek buradan  </li>
+<li> categoryId |required | hizmetin category id si gelecek buradan  </li>
+<li> subCategoryId |required | hizmetin sub_category id si gelecek buradan  </li>
+<li> time |required | hizmetin süresi gelecek buradan  </li>
+<li> price |required | hizmetin fiyatı gelecek buradan  </li>
+</ul>
+
+<span id="example-requests-POSTapi-business-business-service-update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/business-service/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/business-service/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-business-service-update">
+</span>
+<span id="execution-results-POSTapi-business-business-service-update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-business-service-update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-business-service-update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-business-service-update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-business-service-update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-business-service-update" data-method="POST"
+      data-path="api/business/business-service/update"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-business-service-update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-business-service-update"
+                    onclick="tryItOut('POSTapi-business-business-service-update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-business-service-update"
+                    onclick="cancelTryOut('POSTapi-business-business-service-update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-business-service-update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/business-service/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-business-service-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-business-service-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-business-service-update"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="businessservice-POSTapi-business-business-service-delete">POST api/business-service/delete</h2>
+
+<p>
+</p>
+
+<p>id si gönderilen işletme hizmetinin bilgilerini getirecek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li>businessServiceId | required | güncellenecek hizmetin idsi</li>
+</ul>
+
+<span id="example-requests-POSTapi-business-business-service-delete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/business-service/delete" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/business-service/delete"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-business-service-delete">
+</span>
+<span id="execution-results-POSTapi-business-business-service-delete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-business-service-delete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-business-service-delete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-business-service-delete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-business-service-delete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-business-service-delete" data-method="POST"
+      data-path="api/business/business-service/delete"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-business-service-delete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-business-service-delete"
+                    onclick="tryItOut('POSTapi-business-business-service-delete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-business-service-delete"
+                    onclick="cancelTryOut('POSTapi-business-business-service-delete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-business-service-delete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/business-service/delete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-business-service-delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-business-service-delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-business-service-delete"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                <h1 id="detailsetup">DetailSetup</h1>
+
+    
+
+                                <h2 id="detailsetup-GETapi-business-detail-setup-step-1-get">GET api/business/detail-setup/step-1/get</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-business-detail-setup-step-1-get">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/business/detail-setup/step-1/get" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/detail-setup/step-1/get"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-business-detail-setup-step-1-get">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-business-detail-setup-step-1-get" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-business-detail-setup-step-1-get"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-business-detail-setup-step-1-get"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-business-detail-setup-step-1-get" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-business-detail-setup-step-1-get">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-business-detail-setup-step-1-get" data-method="GET"
+      data-path="api/business/detail-setup/step-1/get"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-business-detail-setup-step-1-get', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-business-detail-setup-step-1-get"
+                    onclick="tryItOut('GETapi-business-detail-setup-step-1-get');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-business-detail-setup-step-1-get"
+                    onclick="cancelTryOut('GETapi-business-detail-setup-step-1-get');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-business-detail-setup-step-1-get"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/business/detail-setup/step-1/get</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-business-detail-setup-step-1-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-business-detail-setup-step-1-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="detailsetup-POSTapi-business-detail-setup-step-1-update">POST api/detail-setup/step-1/update</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Bearer Token</li>
+<li>officialName | string | required | Salon Sahibinin adı</li>
+<li>businessName | string | required | Salon Adı</li>
+<li>offDay | numeric | required | kapalı olduğu günün id si </li>
+<li>businessType | numeric | required | işletme türü id'si </li>
+<li>cityId  | string | required | Şehir</li>
+<li>districtId  | string | required | İlçe</li>
+<li>phone | string | required | İşletme Telefon Numarası</li>
+<li>email | string | required | İşletme E-posta Adresi</li>
+<li>commission | string | required | P. Kredi kartı kesintisi | örneğin (10, 20, 30,40)</li>
+<li>appointmentRange | string | required | Randevu aralığı | örneğin (10, 20, 30,40)</li>
+<li>personalCount | string | required | Personel Sayısı | örneğin (1, 3, 5,10)</li>
+<li>aboutText | string | required| İşletme Hakkında Yazısı</li>
+<li>startTime | string | required| İşletme Açılış Saati Örneğin (12:08)</li>
+<li>endTime | string | required| İşletme Kapanış Saati Örneğin (18:08)</li>
+<li>year | date | required| Kuruluş Tarihi örneğin (2023-04-01)</li>
+<li>address | text | required| Address Metni</li>
+</ul>
+<p>Detaylı Kurulum Ekranı İşletme Bilgileri güncelleme Apisi</p>
+
+<span id="example-requests-POSTapi-business-detail-setup-step-1-update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/detail-setup/step-1/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"officialName\": \"lc\",
+    \"businessName\": \"owrdhqhhvuovrrdvqklbc\",
+    \"appointmentRange\": 14866191.495,
+    \"businessType\": 5661906.68739102,
+    \"phone\": \"vpznyfycdixhluo\",
+    \"startTime\": \"aperiam\",
+    \"endTime\": \"dolorem\",
+    \"email\": \"aliza.waelchi@example.net\",
+    \"year\": \"2023-10-21T15:18:00\",
+    \"address\": \"quo\",
+    \"cityId\": 35805696.1,
+    \"districtId\": 3956.5,
+    \"commission\": 21164733,
+    \"personalCount\": 135573.1,
+    \"offDay\": 2394.04693308,
+    \"aboutText\": \"ex\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/detail-setup/step-1/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "officialName": "lc",
+    "businessName": "owrdhqhhvuovrrdvqklbc",
+    "appointmentRange": 14866191.495,
+    "businessType": 5661906.68739102,
+    "phone": "vpznyfycdixhluo",
+    "startTime": "aperiam",
+    "endTime": "dolorem",
+    "email": "aliza.waelchi@example.net",
+    "year": "2023-10-21T15:18:00",
+    "address": "quo",
+    "cityId": 35805696.1,
+    "districtId": 3956.5,
+    "commission": 21164733,
+    "personalCount": 135573.1,
+    "offDay": 2394.04693308,
+    "aboutText": "ex"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-detail-setup-step-1-update">
+</span>
+<span id="execution-results-POSTapi-business-detail-setup-step-1-update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-detail-setup-step-1-update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-detail-setup-step-1-update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-detail-setup-step-1-update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-detail-setup-step-1-update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-detail-setup-step-1-update" data-method="POST"
+      data-path="api/business/detail-setup/step-1/update"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-detail-setup-step-1-update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-detail-setup-step-1-update"
+                    onclick="tryItOut('POSTapi-business-detail-setup-step-1-update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-detail-setup-step-1-update"
+                    onclick="cancelTryOut('POSTapi-business-detail-setup-step-1-update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-detail-setup-step-1-update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/detail-setup/step-1/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>officialName</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="officialName"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="lc"
+               data-component="body">
+    <br>
+<p>value değeri 255 karakter değerinden küçük olmalıdır. Example: <code>lc</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>businessName</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="businessName"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="owrdhqhhvuovrrdvqklbc"
+               data-component="body">
+    <br>
+<p>value değeri 255 karakter değerinden küçük olmalıdır. Example: <code>owrdhqhhvuovrrdvqklbc</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>appointmentRange</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="appointmentRange"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="14866191.495"
+               data-component="body">
+    <br>
+<p>Example: <code>14866191.495</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>businessType</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="businessType"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="5661906.687391"
+               data-component="body">
+    <br>
+<p>Example: <code>5661906.687391</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="vpznyfycdixhluo"
+               data-component="body">
+    <br>
+<p>value değeri 11 karakter değerinden büyük olmalıdır. Example: <code>vpznyfycdixhluo</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>startTime</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="startTime"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="aperiam"
+               data-component="body">
+    <br>
+<p>Example: <code>aperiam</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>endTime</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="endTime"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="dolorem"
+               data-component="body">
+    <br>
+<p>Example: <code>dolorem</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="aliza.waelchi@example.net"
+               data-component="body">
+    <br>
+<p>Example: <code>aliza.waelchi@example.net</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="year"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="2023-10-21T15:18:00"
+               data-component="body">
+    <br>
+<p>value geçerli bir tarih olmalıdır. Example: <code>2023-10-21T15:18:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="address"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="quo"
+               data-component="body">
+    <br>
+<p>Example: <code>quo</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cityId</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="cityId"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="35805696.1"
+               data-component="body">
+    <br>
+<p>Example: <code>35805696.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>districtId</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="districtId"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="3956.5"
+               data-component="body">
+    <br>
+<p>Example: <code>3956.5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>commission</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="commission"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="21164733"
+               data-component="body">
+    <br>
+<p>Example: <code>21164733</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>personalCount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="personalCount"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="135573.1"
+               data-component="body">
+    <br>
+<p>Example: <code>135573.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>offDay</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="offDay"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="2394.04693308"
+               data-component="body">
+    <br>
+<p>Example: <code>2394.04693308</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>aboutText</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="aboutText"                data-endpoint="POSTapi-business-detail-setup-step-1-update"
+               value="ex"
+               data-component="body">
+    <br>
+<p>Example: <code>ex</code></p>
+        </div>
+        </form>
+
+                <h1 id="payment">Payment</h1>
+
+    
+
+                                <h2 id="payment-GETapi-business-payment">GET api/payment</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Bearer Token | string | required | Kullanıcı Token</li>
+</ul>
+<p>Kullanıcını işletmesinin packet bilgisi ve kullanıcının cartları</p>
+
+<span id="example-requests-GETapi-business-payment">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/business/payment" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/payment"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-business-payment">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-business-payment" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-business-payment"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-business-payment"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-business-payment" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-business-payment">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-business-payment" data-method="GET"
+      data-path="api/business/payment"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-business-payment', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-business-payment"
+                    onclick="tryItOut('GETapi-business-payment');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-business-payment"
+                    onclick="cancelTryOut('GETapi-business-payment');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-business-payment"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/business/payment</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-business-payment"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-business-payment"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="payment-POSTapi-business-payment-pay">POST api/payment/pay</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Bearer Token | string | required | Kullanıcı Token</li>
+<li>cart_id | numeric | required | Seçilen Kart Bilgisi</li>
+</ul>
+<p>Kullanıcını işletmesinin packet bilgisi ve kullanıcının cartları</p>
+
+<span id="example-requests-POSTapi-business-payment-pay">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/payment/pay" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"cart_id\": \"mmhsazjexpwl\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/payment/pay"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "cart_id": "mmhsazjexpwl"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-payment-pay">
+</span>
+<span id="execution-results-POSTapi-business-payment-pay" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-payment-pay"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-payment-pay"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-payment-pay" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-payment-pay">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-payment-pay" data-method="POST"
+      data-path="api/business/payment/pay"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-payment-pay', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-payment-pay"
+                    onclick="tryItOut('POSTapi-business-payment-pay');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-payment-pay"
+                    onclick="cancelTryOut('POSTapi-business-payment-pay');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-payment-pay"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/payment/pay</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-payment-pay"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-payment-pay"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cart_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="cart_id"                data-endpoint="POSTapi-business-payment-pay"
+               value="mmhsazjexpwl"
+               data-component="body">
+    <br>
+<p>value değeri 1 karakter değerinden büyük olmalıdır. Example: <code>mmhsazjexpwl</code></p>
+        </div>
+        </form>
+
+                <h1 id="personal">Personal</h1>
+
+    
+
+                                <h2 id="personal-GETapi-business-personal">GET api/personal</h2>
+
+<p>
+</p>
+
+<p>Personel listesini döndürecek size
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+</ul>
+
+<span id="example-requests-GETapi-business-personal">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/business/personal" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/personal"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-business-personal">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-business-personal" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-business-personal"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-business-personal"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-business-personal" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-business-personal">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-business-personal" data-method="GET"
+      data-path="api/business/personal"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-business-personal', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-business-personal"
+                    onclick="tryItOut('GETapi-business-personal');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-business-personal"
+                    onclick="cancelTryOut('GETapi-business-personal');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-business-personal"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/business/personal</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-business-personal"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-business-personal"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="GETapi-business-personal"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="personal-POSTapi-business-personal-get">POST api/personal/get</h2>
+
+<p>
+</p>
+
+<p>id si gönderilen personelin getirecek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li>personalId | required | güncellenecek personel id si</li>
+</ul>
+
+<span id="example-requests-POSTapi-business-personal-get">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/personal/get" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/personal/get"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-personal-get">
+</span>
+<span id="execution-results-POSTapi-business-personal-get" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-personal-get"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-personal-get"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-personal-get" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-personal-get">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-personal-get" data-method="POST"
+      data-path="api/business/personal/get"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-personal-get', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-personal-get"
+                    onclick="tryItOut('POSTapi-business-personal-get');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-personal-get"
+                    onclick="cancelTryOut('POSTapi-business-personal-get');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-personal-get"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/personal/get</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-personal-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-personal-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-personal-get"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="personal-POSTapi-business-personal-add">POST api/personal/add</h2>
+
+<p>
+</p>
+
+<p>Personel Ekleme pointi
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li> name |required | string | </li>
+<li> image |required | string | </li>
+<li> email |required | string | </li>
+<li> phone |required | string | </li>
+<li> password |required | string | </li>
+<li> approveType |required | numeric | örneğin 1 veya 0</li>
+<li> restDay |required | numeric | haftanın günlerinden herhangi bir günün id si</li>
+<li> startTime |required | string | örneğin 10:43 </li>
+<li> endTime |required | string | örneğin 10:43</li>
+<li> foodStart |required | string | örneğin 10:43</li>
+<li> foodEnd |required | string | örneğin 10:43</li>
+<li> gender |required | numeric | 1 => kadın,2 => erkek,3 => Unisex herhangi biri</li>
+<li> rate |required | numeric | 10 personel yüzdesi 10 = %10</li>
+<li> appointmentRange |required | numeric | randevu aralığı örneğin "15" dk bazında</li>
+<li> description |required | string</li>
+<li> services | required | array | eğer tümü seçeneği seçilirse "all" olarak gönderebilirsiniz dizi içerisinde</li>
+</ul>
+
+<span id="example-requests-POSTapi-business-personal-add">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/personal/add" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/personal/add"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-personal-add">
+</span>
+<span id="execution-results-POSTapi-business-personal-add" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-personal-add"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-personal-add"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-personal-add" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-personal-add">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-personal-add" data-method="POST"
+      data-path="api/business/personal/add"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-personal-add', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-personal-add"
+                    onclick="tryItOut('POSTapi-business-personal-add');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-personal-add"
+                    onclick="cancelTryOut('POSTapi-business-personal-add');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-personal-add"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/personal/add</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-personal-add"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-personal-add"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-personal-add"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="personal-POSTapi-business-personal-update">POST api/personal/update</h2>
+
+<p>
+</p>
+
+<p>Personel Güncelleme pointi
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li> personal_id | required | numeric</li>
+<li> name |required | string | personal adı</li>
+<li> image |required | string | personel görseli</li>
+<li> email |required | string | mail adresi</li>
+<li> phone |required | string | telefon numarası</li>
+<li> password |required | string | şifre</li>
+<li> approveType |required | numeric | örneğin 1 veya 0</li>
+<li> restDay |required | numeric | haftanın günlerinden herhangi bir günün id si</li>
+<li> startTime |required | string | örneğin 10:43 </li>
+<li> endTime |required | string | örneğin 10:43</li>
+<li> foodStart |required | string | örneğin 10:43</li>
+<li> foodEnd |required | string | örneğin 10:43</li>
+<li> gender |required | numeric | 1 => kadın,2 => erkek,3 => Unisex herhangi biri</li>
+<li> rate |required | numeric | 10 personel yüzdesi 10 = %10</li>
+<li> appointmentRange |required | numeric | randevu aralığı örneğin "15" dk bazında</li>
+<li> description |required | string</li>
+<li> services | required | array | eğer tümü seçeneği seçilirse "all" olarak gönderebilirsiniz dizi içerisinde</li>
+</ul>
+
+<span id="example-requests-POSTapi-business-personal-update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/personal/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/personal/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-personal-update">
+</span>
+<span id="execution-results-POSTapi-business-personal-update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-personal-update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-personal-update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-personal-update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-personal-update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-personal-update" data-method="POST"
+      data-path="api/business/personal/update"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-personal-update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-personal-update"
+                    onclick="tryItOut('POSTapi-business-personal-update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-personal-update"
+                    onclick="cancelTryOut('POSTapi-business-personal-update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-personal-update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/personal/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-personal-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-personal-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-personal-update"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="personal-POSTapi-business-personal-delete">POST api/personal/get</h2>
+
+<p>
+</p>
+
+<p>id si gönderilen personeli silecek
+<br> Gerekli alanlar</p>
+<ul>
+<li> token </li>
+<li>personalId | required | silinecek personel id si</li>
+</ul>
+
+<span id="example-requests-POSTapi-business-personal-delete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/personal/delete" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/personal/delete"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-personal-delete">
+</span>
+<span id="execution-results-POSTapi-business-personal-delete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-personal-delete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-personal-delete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-personal-delete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-personal-delete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-personal-delete" data-method="POST"
+      data-path="api/business/personal/delete"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-personal-delete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-personal-delete"
+                    onclick="tryItOut('POSTapi-business-personal-delete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-personal-delete"
+                    onclick="cancelTryOut('POSTapi-business-personal-delete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-personal-delete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/personal/delete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-personal-delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-personal-delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-business-personal-delete"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                <h1 id="personalauth">PersonalAuth</h1>
+
+    
+
+                                <h2 id="personalauth-POSTapi-personal-auth-login">POST api/personal/auth/login</h2>
+
+<p>
+</p>
+
+<p>Status Codes</p>
+<ul>
+<li>phone</li>
+<li>password</li>
+<li> 401 Unauthorized Hatası </li>
+</ul>
+<p>Login apisi</p>
+
+<span id="example-requests-POSTapi-personal-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/personal/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"phone\": \"ut\",
+    \"password\": \"h#zAKlZ0?F22a!H%cW5\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/personal/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "phone": "ut",
+    "password": "h#zAKlZ0?F22a!H%cW5"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-personal-auth-login">
+</span>
+<span id="execution-results-POSTapi-personal-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-personal-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-personal-auth-login"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-personal-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-personal-auth-login">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-personal-auth-login" data-method="POST"
+      data-path="api/personal/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-personal-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-personal-auth-login"
+                    onclick="tryItOut('POSTapi-personal-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-personal-auth-login"
+                    onclick="cancelTryOut('POSTapi-personal-auth-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-personal-auth-login"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/personal/auth/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-personal-auth-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-personal-auth-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-personal-auth-login"
+               value="ut"
+               data-component="body">
+    <br>
+<p>Example: <code>ut</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-personal-auth-login"
+               value="h#zAKlZ0?F22a!H%cW5"
+               data-component="body">
+    <br>
+<p>Example: <code>h#zAKlZ0?F22a!H%cW5</code></p>
+        </div>
+        </form>
+
+                    <h2 id="personalauth-GETapi-personal-user">GET api/personal/auth/user</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Token Göndermeniz Yeterli</li>
+</ul>
+<p>Use Info apisi</p>
+
+<span id="example-requests-GETapi-personal-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/personal/user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/personal/user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-personal-user">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-personal-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-personal-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-personal-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-personal-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-personal-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-personal-user" data-method="GET"
+      data-path="api/personal/user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-personal-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-personal-user"
+                    onclick="tryItOut('GETapi-personal-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-personal-user"
+                    onclick="cancelTryOut('GETapi-personal-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-personal-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/personal/user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-personal-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-personal-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="GETapi-personal-user"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="personalauth-POSTapi-personal-logout">POST api/personal/auth/logout</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Token Göndermeniz Yeterli</li>
+</ul>
+<p>Logout apisi</p>
+
+<span id="example-requests-POSTapi-personal-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/personal/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Bearer: {token}"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/personal/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Bearer": "{token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-personal-logout">
+</span>
+<span id="execution-results-POSTapi-personal-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-personal-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-personal-logout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-personal-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-personal-logout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-personal-logout" data-method="POST"
+      data-path="api/personal/logout"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-personal-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-personal-logout"
+                    onclick="tryItOut('POSTapi-personal-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-personal-logout"
+                    onclick="cancelTryOut('POSTapi-personal-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-personal-logout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/personal/logout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-personal-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-personal-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Bearer</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Bearer"                data-endpoint="POSTapi-personal-logout"
+               value="{token}"
+               data-component="header">
+    <br>
+<p>Example: <code>{token}</code></p>
+            </div>
+                        </form>
+
+                <h1 id="setup">Setup</h1>
+
+    
+
+                                <h2 id="setup-GETapi-business-setup-get">GET api/setup</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Bearer Token | string | required | Kullanıcı Token</li>
+</ul>
+<p>Kayıt Ekranı Tüm Bilgiler Apisi</p>
+
+<span id="example-requests-GETapi-business-setup-get">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8001/api/business/setup/get" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/setup/get"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-business-setup-get">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-business-setup-get" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-business-setup-get"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-business-setup-get"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-business-setup-get" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-business-setup-get">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-business-setup-get" data-method="GET"
+      data-path="api/business/setup/get"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-business-setup-get', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-business-setup-get"
+                    onclick="tryItOut('GETapi-business-setup-get');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-business-setup-get"
+                    onclick="cancelTryOut('GETapi-business-setup-get');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-business-setup-get"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/business/setup/get</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-business-setup-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-business-setup-get"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="setup-POSTapi-business-setup-update">POST api/setup/update</h2>
+
+<p>
+</p>
+
+<ul>
+<li>Bearer Token | required | İşletme Kategorisi</li>
+<li>category_id | string | required | İşletme Kategorisi</li>
+<li>name | string | required | İşletme Adı</li>
+<li>type_id | string | required | Hizmet Türü businessTypes değişkeninden alabilirsiniz </li>
+<li>city_id  | string | required | Şehir</li>
+<li>district_id  | string | required | İlçe</li>
+<li>off_day_id  | string | required | Kapalı Olduğu Gün</li>
+<li>phone | string | required | Kullanıcı Telefon Numarası</li>
+<li>about_content | string | required| İşletme Hakkında Yazısı</li>
+<li>start_time | string | required| İşletme Açılış Saati Örneğin (12:08)</li>
+<li>end_time | string | required| İşletme Kapanış Saati Örneğin (18:08)</li>
+<li>latitude | string | required| Haritadan seçilen lat bilgisi</li>
+<li>longitude | string | required| Haritadan seçilen long bilgisi</li>
+<li>address | text | required| Address Metni</li>
+<li>package_id | integer or string | required| Seçili Paket idsi</li>
+</ul>
+<p>Kayıt Ekranı Tüm Bilgiler güncelleme Apisi</p>
+
+<span id="example-requests-POSTapi-business-setup-update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8001/api/business/setup/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8001/api/business/setup/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-business-setup-update">
+</span>
+<span id="execution-results-POSTapi-business-setup-update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-business-setup-update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-business-setup-update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-business-setup-update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-business-setup-update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-business-setup-update" data-method="POST"
+      data-path="api/business/setup/update"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-business-setup-update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-business-setup-update"
+                    onclick="tryItOut('POSTapi-business-setup-update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-business-setup-update"
+                    onclick="cancelTryOut('POSTapi-business-setup-update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-business-setup-update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/business/setup/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-business-setup-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-business-setup-update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

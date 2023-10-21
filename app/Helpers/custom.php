@@ -25,3 +25,9 @@ function authUser(){
         return auth('admin')->user();
     }
 }
+function clearPhone($phoneNumber){
+    $newPhoneNumber = str_replace([' ', '(', ')', '-'], '', $phoneNumber);
+
+    return $newPhoneNumber;
+
+}

@@ -48,36 +48,6 @@ class AppServiceProvider extends ServiceProvider
             return $registrar;
         });
 
-        $settings = [];
-
-       foreach (Setting::all() as $item) {
-            $settings[$item->name] = $item->value;
-        }
-        $sections = [];
-        foreach (ForBusiness::all() as $item) {
-            $sections[$item->name] = $item->value;
-        }
-        \Config::set('sections', $sections);
-        \Config::set('settings', $settings);
-        $globalData = [
-            'pages' => Page::where('status', 1)->take(5)->latest()->get(),
-            'infos'=>BusinessInfo::where('status', 0)->get(),
-        ];
-
-        \View::share('globalData', $globalData);
-        $cities=City::orderBy('name')->take(10)->get();
-        View::share('cities', $cities);
-        $businesses=Business::all();
-        View::share('businesses', $businesses);
-        $services=ServiceCategory::all();
-        View::share('services_top', $services);
-        $categorys=Category::all();
-        View::share('categories', $categorys);
-        $main_pages=[];
-        foreach (MaingPage::all() as $item) {
-            $main_pages[$item->name] = $item->value;
-        }
-        \Config::set('main_pages', $main_pages);
         Paginator::useBootstrapFour();
     }
 }
