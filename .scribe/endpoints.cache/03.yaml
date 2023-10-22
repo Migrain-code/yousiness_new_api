@@ -76,12 +76,12 @@ endpoints:
         name: cart_id
         description: 'value değeri 1 karakter değerinden büyük olmalıdır.'
         required: true
-        example: mmhsazjexpwl
+        example: hejstfmnzqyzetrxwsivvmmqjjtycmtykygypegtqmdljiasluxblrlgmgysbqofvkmtmsajodzlxvwflqbnbjmr
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      cart_id: mmhsazjexpwl
+      cart_id: hejstfmnzqyzetrxwsivvmmqjjtycmtykygypegtqmdljiasluxblrlgmgysbqofvkmtmsajodzlxvwflqbnbjmr
     fileParameters: []
     responses: []
     responseFields: []

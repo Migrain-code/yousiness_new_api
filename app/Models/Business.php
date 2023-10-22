@@ -6,11 +6,13 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 
 class Business extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory,HasApiTokens, Notifiable;
 
     protected $guarded = ['business'];
     //protected $dates=['start_time', 'end_time'];

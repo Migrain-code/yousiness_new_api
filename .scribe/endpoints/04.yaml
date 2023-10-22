@@ -85,7 +85,7 @@ endpoints:
         name: officialName
         description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
         required: true
-        example: lc
+        example: ixsrhzktcqdttzmgzqhmvmnwn
         type: string
         enumValues: []
         custom: []
@@ -93,7 +93,7 @@ endpoints:
         name: businessName
         description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
         required: true
-        example: owrdhqhhvuovrrdvqklbc
+        example: khdliarbiyizfwweivzypte
         type: string
         enumValues: []
         custom: []
@@ -101,7 +101,7 @@ endpoints:
         name: appointmentRange
         description: ''
         required: true
-        example: 14866191.495
+        example: 174.99
         type: number
         enumValues: []
         custom: []
@@ -109,7 +109,7 @@ endpoints:
         name: businessType
         description: ''
         required: true
-        example: 5661906.687391
+        example: 23.868259
         type: number
         enumValues: []
         custom: []
@@ -117,7 +117,7 @@ endpoints:
         name: phone
         description: 'value değeri 11 karakter değerinden büyük olmalıdır.'
         required: true
-        example: vpznyfycdixhluo
+        example: wsonnmnmboyymqefbecefcixgvgapazenkndkogmiaty
         type: string
         enumValues: []
         custom: []
@@ -125,7 +125,7 @@ endpoints:
         name: startTime
         description: ''
         required: true
-        example: aperiam
+        example: unde
         type: string
         enumValues: []
         custom: []
@@ -133,7 +133,7 @@ endpoints:
         name: endTime
         description: ''
         required: true
-        example: dolorem
+        example: sunt
         type: string
         enumValues: []
         custom: []
@@ -141,7 +141,7 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: aliza.waelchi@example.net
+        example: mertz.abdullah@example.net
         type: string
         enumValues: []
         custom: []
@@ -149,7 +149,7 @@ endpoints:
         name: year
         description: 'value geçerli bir tarih olmalıdır.'
         required: true
-        example: '2023-10-21T15:18:00'
+        example: '2023-10-22T20:06:19'
         type: string
         enumValues: []
         custom: []
@@ -157,7 +157,7 @@ endpoints:
         name: address
         description: ''
         required: true
-        example: quo
+        example: in
         type: string
         enumValues: []
         custom: []
@@ -165,7 +165,7 @@ endpoints:
         name: cityId
         description: ''
         required: true
-        example: 35805696.1
+        example: 9190.122
         type: number
         enumValues: []
         custom: []
@@ -173,7 +173,7 @@ endpoints:
         name: districtId
         description: ''
         required: true
-        example: 3956.5
+        example: 37064655.0
         type: number
         enumValues: []
         custom: []
@@ -181,7 +181,7 @@ endpoints:
         name: commission
         description: ''
         required: true
-        example: 21164733.0
+        example: 108902.51990953
         type: number
         enumValues: []
         custom: []
@@ -189,7 +189,7 @@ endpoints:
         name: personalCount
         description: ''
         required: true
-        example: 135573.1
+        example: 43.215
         type: number
         enumValues: []
         custom: []
@@ -197,7 +197,7 @@ endpoints:
         name: offDay
         description: ''
         required: true
-        example: 2394.04693308
+        example: 724616554.92949
         type: number
         enumValues: []
         custom: []
@@ -205,27 +205,27 @@ endpoints:
         name: aboutText
         description: ''
         required: true
-        example: ex
+        example: eos
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      officialName: lc
-      businessName: owrdhqhhvuovrrdvqklbc
-      appointmentRange: 14866191.495
-      businessType: 5661906.687391
-      phone: vpznyfycdixhluo
-      startTime: aperiam
-      endTime: dolorem
-      email: aliza.waelchi@example.net
-      year: '2023-10-21T15:18:00'
-      address: quo
-      cityId: 35805696.1
-      districtId: 3956.5
-      commission: 21164733.0
-      personalCount: 135573.1
-      offDay: 2394.04693308
-      aboutText: ex
+      officialName: ixsrhzktcqdttzmgzqhmvmnwn
+      businessName: khdliarbiyizfwweivzypte
+      appointmentRange: 174.99
+      businessType: 23.868259
+      phone: wsonnmnmboyymqefbecefcixgvgapazenkndkogmiaty
+      startTime: unde
+      endTime: sunt
+      email: mertz.abdullah@example.net
+      year: '2023-10-22T20:06:19'
+      address: in
+      cityId: 9190.122
+      districtId: 37064655.0
+      commission: 108902.51990953
+      personalCount: 43.215
+      offDay: 724616554.92949
+      aboutText: eos
     fileParameters: []
     responses: []
     responseFields: []

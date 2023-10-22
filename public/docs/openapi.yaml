@@ -26,11 +26,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: inventore
+                  example: quis
                 password:
                   type: string
                   description: ''
-                  example: HpfljG
+                  example: 'X,\D"jY6*jw2Wj#sC:'
               required:
                 - phone
                 - password
@@ -55,7 +55,7 @@ paths:
       tags:
         - Authentication
       security: []
-  /api/business/auth/user:
+  /api/business/user:
     get:
       summary: 'GET api/auth/user'
       operationId: gETApiauthuser
@@ -84,7 +84,7 @@ paths:
       tags:
         - Authentication
       security: []
-  /api/business/auth/logout:
+  /api/business/logout:
     post:
       summary: 'POST api/auth/logout'
       operationId: pOSTApiauthlogout
@@ -239,67 +239,67 @@ paths:
                 officialName:
                   type: string
                   description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
-                  example: lc
+                  example: ixsrhzktcqdttzmgzqhmvmnwn
                 businessName:
                   type: string
                   description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
-                  example: owrdhqhhvuovrrdvqklbc
+                  example: khdliarbiyizfwweivzypte
                 appointmentRange:
                   type: number
                   description: ''
-                  example: 14866191.495
+                  example: 174.99
                 businessType:
                   type: number
                   description: ''
-                  example: 5661906.687391
+                  example: 23.868259
                 phone:
                   type: string
                   description: 'value değeri 11 karakter değerinden büyük olmalıdır.'
-                  example: vpznyfycdixhluo
+                  example: wsonnmnmboyymqefbecefcixgvgapazenkndkogmiaty
                 startTime:
                   type: string
                   description: ''
-                  example: aperiam
+                  example: unde
                 endTime:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: sunt
                 email:
                   type: string
                   description: ''
-                  example: aliza.waelchi@example.net
+                  example: mertz.abdullah@example.net
                 year:
                   type: string
                   description: 'value geçerli bir tarih olmalıdır.'
-                  example: '2023-10-21T15:18:00'
+                  example: '2023-10-22T20:06:19'
                 address:
                   type: string
                   description: ''
-                  example: quo
+                  example: in
                 cityId:
                   type: number
                   description: ''
-                  example: 35805696.1
+                  example: 9190.122
                 districtId:
                   type: number
                   description: ''
-                  example: 3956.5
+                  example: 37064655.0
                 commission:
                   type: number
                   description: ''
-                  example: 21164733.0
+                  example: 108902.51990953
                 personalCount:
                   type: number
                   description: ''
-                  example: 135573.1
+                  example: 43.215
                 offDay:
                   type: number
                   description: ''
-                  example: 2394.04693308
+                  example: 724616554.92949
                 aboutText:
                   type: string
                   description: ''
-                  example: ex
+                  example: eos
               required:
                 - officialName
                 - businessName
@@ -317,6 +317,194 @@ paths:
                 - personalCount
                 - offDay
                 - aboutText
+      security: []
+  /api/business/package-sale:
+    get:
+      summary: 'GET api/business/package-sale'
+      operationId: gETApibusinesspackageSale
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n</ul>\nİşletmenin paket satışı listesi sadece bu apiden dönen verileri listede göstermeniz yeterlidir."
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - PackageSale
+      security: []
+  /api/business/package-sale/payments:
+    post:
+      summary: 'POST api/business/package-sale/payments'
+      operationId: pOSTApibusinesspackageSalepayments
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | numeric | required | Paket id</li>\n</ul>\nİd si gönderilen paketin ödemelerinin listesini döndürecek"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      security: []
+  /api/business/package-sale/usages:
+    post:
+      summary: 'POST api/business/package-sale/usages'
+      operationId: pOSTApibusinesspackageSaleusages
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | numeric | required | Paket id</li>\n</ul>\nİd si gönderilen paketin kullanım listesini döndürecek"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      security: []
+  /api/business/package-sale/create-packet:
+    get:
+      summary: 'GET api/business/package-sale/create-packet'
+      operationId: gETApibusinesspackageSalecreatePacket
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n</ul>\nBu point ile paket satışı oluşturma sayfasını açtığınızda ihtiyacınız olan tüm bilgiler size döndürülecek"
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - PackageSale
+      security: []
+  /api/business/package-sale/add-packet:
+    post:
+      summary: 'POST api/business/package-sale/add-packet'
+      operationId: pOSTApibusinesspackageSaleaddPacket
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>customer_id | string | required | Müşteri Id'si</li>\n<li>service_id | string | required | Hizmet ID 'si</li>\n<li>amount | string | required | Adet, Paket Sayısı</li>\n<li>total | string | required | Toplam Fiyat, Fiyat</li>\n<li>personel_id | string | required | Personel ID'si</li>\n<li>package_type | string | required | Paket Türü seans veya dakika</li>\n<li>seller_date | date | required | Paket Satış Tarihi örnek (14.10.2023)</li>\n</ul>\nBu point ile paket satışı oluşturma işlemini gerçekleştireceksiniz"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  description: ''
+                  example: alias
+                service_id:
+                  type: string
+                  description: ''
+                  example: et
+                amount:
+                  type: string
+                  description: ''
+                  example: fugiat
+                total:
+                  type: string
+                  description: ''
+                  example: recusandae
+                personel_id:
+                  type: string
+                  description: ''
+                  example: autem
+                package_type:
+                  type: string
+                  description: ''
+                  example: ipsam
+                seller_date:
+                  type: string
+                  description: ''
+                  example: eligendi
+              required:
+                - customer_id
+                - service_id
+                - amount
+                - total
+                - personel_id
+                - package_type
+                - seller_date
+      security: []
+  /api/business/package-sale/add-payment:
+    post:
+      summary: 'POST api/business/package-sale/add-payment'
+      operationId: pOSTApibusinesspackageSaleaddPayment
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | string | required | Paket Id'si</li>\n<li>price | string | required | Ödeme Yapılan Tutar</li>\n<li>amount | string | required | Ödeme Yapılan adet</li>\n</ul>\nBu point ile pakete ödeme eklemi işlemini gerçekleştireceksiniz"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: ''
+                  example: soluta
+                price:
+                  type: string
+                  description: ''
+                  example: natus
+                amount:
+                  type: string
+                  description: ''
+                  example: dolorum
+              required:
+                - package_id
+                - price
+                - amount
+      security: []
+  /api/business/package-sale/add-usage:
+    post:
+      summary: 'POST api/business/package-sale/add-usage'
+      operationId: pOSTApibusinesspackageSaleaddUsage
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | string | required | Paket Id'si</li>\n<li>personel_id | string | required | Kullanımı yapan personel Id'si</li>\n<li>amount | string | required | Kullanılan adet</li>\n<li>operation_date | string | required | İşlemin yapıldığı tarih örn (19.10.2023 19:56:11)</li>\n</ul>\nBu point ile pakete ödeme eklemi işlemini gerçekleştireceksiniz"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                personel_id:
+                  type: string
+                  description: ''
+                  example: sint
+                amount:
+                  type: string
+                  description: ''
+                  example: aliquam
+                operation_date:
+                  type: string
+                  description: ''
+                  example: ut
+              required:
+                - package_id
+                - personel_id
+                - amount
+                - operation_date
       security: []
   /api/business/payment:
     get:
@@ -359,7 +547,7 @@ paths:
                 cart_id:
                   type: string
                   description: 'value değeri 1 karakter değerinden büyük olmalıdır.'
-                  example: mmhsazjexpwl
+                  example: hejstfmnzqyzetrxwsivvmmqjjtycmtykygypegtqmdljiasluxblrlgmgysbqofvkmtmsajodzlxvwflqbnbjmr
               required:
                 - cart_id
       security: []
@@ -479,11 +667,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: ut
+                  example: fugit
                 password:
                   type: string
                   description: ''
-                  example: 'h#zAKlZ0?F22a!H%cW5'
+                  example: '.,(9xCea4$'
               required:
                 - phone
                 - password
@@ -575,6 +763,9 @@ tags:
     description: ''
   -
     name: DetailSetup
+    description: ''
+  -
+    name: PackageSale
     description: ''
   -
     name: Payment

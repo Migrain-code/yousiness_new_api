@@ -33,7 +33,7 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: inventore
+        example: quis
         type: string
         enumValues: []
         custom: []
@@ -41,13 +41,13 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: HpfljG
+        example: 'X,\D"jY6*jw2Wj#sC:'
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      phone: inventore
-      password: HpfljG
+      phone: quis
+      password: 'X,\D"jY6*jw2Wj#sC:'
     fileParameters: []
     responses: []
     responseFields: []
@@ -131,7 +131,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/business/auth/user
+    uri: api/business/user
     metadata:
       groupName: Authentication
       groupDescription: ''
@@ -175,7 +175,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/business/auth/logout
+    uri: api/business/logout
     metadata:
       groupName: Authentication
       groupDescription: ''

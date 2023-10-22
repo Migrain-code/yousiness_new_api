@@ -15,6 +15,7 @@ class PersonelResource extends JsonResource
     public function toArray($request)
     {
         return [
+          'id' => $this->id,
           'name' => $this->name,
           'image' => storage($this->image),
           'email' => $this->email,
@@ -27,7 +28,7 @@ class PersonelResource extends JsonResource
           'food_end' => $this->food_end,
           'gender' => $this->type->name ?? "",
           'rate' => $this->rate,
-          'appointment_range' => $this->range == $this->business->appoinment_range ? "Salon İle Aynı" : $this->range,
+          'appointment_range' => $this->range,
           'description' => $this->description,
         ];
     }

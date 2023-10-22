@@ -35,7 +35,7 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: ut
+        example: fugit
         type: string
         enumValues: []
         custom: []
@@ -43,13 +43,13 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: 'h#zAKlZ0?F22a!H%cW5'
+        example: '.,(9xCea4$'
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      phone: ut
-      password: 'h#zAKlZ0?F22a!H%cW5'
+      phone: fugit
+      password: '.,(9xCea4$'
     fileParameters: []
     responses: []
     responseFields: []
