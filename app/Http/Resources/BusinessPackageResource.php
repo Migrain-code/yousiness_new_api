@@ -18,6 +18,7 @@ class BusinessPackageResource extends JsonResource
             'id'=> $this->id,
             'name' => $this->name,
             'price' => $this->price,
+            'color' => $this->color,
             'proparties' => BusinessPackagePropartieResource::collection( $this->proparties),
         ];
     }

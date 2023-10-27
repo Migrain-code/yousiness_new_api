@@ -26,11 +26,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: quis
+                  example: delectus
                 password:
                   type: string
                   description: ''
-                  example: 'X,\D"jY6*jw2Wj#sC:'
+                  example: 'V]YkTXA'
               required:
                 - phone
                 - password
@@ -198,6 +198,101 @@ paths:
       tags:
         - BusinessService
       security: []
+  /api/business/customer:
+    get:
+      summary: ''
+      operationId: getApiBusinessCustomer
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customer
+      security: []
+  /api/business/customer/create:
+    post:
+      summary: ''
+      operationId: postApiBusinessCustomerCreate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'value değeri 3 karakter değerinden büyük olmalıdır.'
+                  example: tbrbrilhdtdimqjhywyglfnxsdjhrievfealoswkajvxuifkjwuhnafucwwvzxfcsnuiwmaxnnekjrnhumidlml
+                phone:
+                  type: string
+                  description: 'value değeri 10 karakter değerinden büyük olmalıdır.'
+                  example: rchevdtxjavqntntspbilzzgsobiqjrvrqgdomxfrwpfojpcehyxmianqxsalqptzkgicqfkjiijdtgweqxqhhk
+                email:
+                  type: string
+                  description: 'value değeri 8 karakter değerinden büyük olmalıdır.'
+                  example: hessel.payton@example.net
+                password:
+                  type: string
+                  description: 'value değeri 8 karakter değerinden büyük olmalıdır.'
+                  example: 'IJ0]aEf'
+                gender:
+                  type: string
+                  description: ''
+                  example: est
+              required:
+                - name
+                - phone
+                - email
+                - password
+                - gender
+      security: []
+  /api/business/customer/edit:
+    post:
+      summary: ''
+      operationId: postApiBusinessCustomerEdit
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Customer
+      security: []
+  /api/business/customer/update:
+    post:
+      summary: ''
+      operationId: postApiBusinessCustomerUpdate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Customer
+      security: []
+  /api/business/customer/delete:
+    post:
+      summary: ''
+      operationId: postApiBusinessCustomerDelete
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Customer
+      security: []
   /api/business/detail-setup/step-1/get:
     get:
       summary: ''
@@ -239,67 +334,67 @@ paths:
                 officialName:
                   type: string
                   description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
-                  example: ixsrhzktcqdttzmgzqhmvmnwn
+                  example: wxcaxknhkkwkzgtygeo
                 businessName:
                   type: string
                   description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
-                  example: khdliarbiyizfwweivzypte
+                  example: tpiedvesngtekul
                 appointmentRange:
                   type: number
                   description: ''
-                  example: 174.99
+                  example: 51162378.0
                 businessType:
                   type: number
                   description: ''
-                  example: 23.868259
+                  example: 30142.782659
                 phone:
                   type: string
                   description: 'value değeri 11 karakter değerinden büyük olmalıdır.'
-                  example: wsonnmnmboyymqefbecefcixgvgapazenkndkogmiaty
+                  example: esmwqjvkjepxgilhzgorjzthvqnqdbuknsyyfstzysxdnfsasxrajqihanuzpvbikpfrvamxwr
                 startTime:
                   type: string
                   description: ''
-                  example: unde
+                  example: tempora
                 endTime:
                   type: string
                   description: ''
-                  example: sunt
+                  example: incidunt
                 email:
                   type: string
                   description: ''
-                  example: mertz.abdullah@example.net
+                  example: boehm.zetta@example.com
                 year:
                   type: string
                   description: 'value geçerli bir tarih olmalıdır.'
-                  example: '2023-10-22T20:06:19'
+                  example: '2023-10-22T22:20:25'
                 address:
                   type: string
                   description: ''
-                  example: in
+                  example: omnis
                 cityId:
                   type: number
                   description: ''
-                  example: 9190.122
+                  example: 152.3
                 districtId:
                   type: number
                   description: ''
-                  example: 37064655.0
+                  example: 441.8881
                 commission:
                   type: number
                   description: ''
-                  example: 108902.51990953
+                  example: 2.8271
                 personalCount:
                   type: number
                   description: ''
-                  example: 43.215
+                  example: 48662.88514
                 offDay:
                   type: number
                   description: ''
-                  example: 724616554.92949
+                  example: 14292001.898069
                 aboutText:
                   type: string
                   description: ''
-                  example: eos
+                  example: amet
               required:
                 - officialName
                 - businessName
@@ -340,26 +435,6 @@ paths:
       tags:
         - PackageSale
       security: []
-  /api/business/package-sale/payments:
-    post:
-      summary: 'POST api/business/package-sale/payments'
-      operationId: pOSTApibusinesspackageSalepayments
-      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | numeric | required | Paket id</li>\n</ul>\nİd si gönderilen paketin ödemelerinin listesini döndürecek"
-      parameters: []
-      responses: {  }
-      tags:
-        - PackageSale
-      security: []
-  /api/business/package-sale/usages:
-    post:
-      summary: 'POST api/business/package-sale/usages'
-      operationId: pOSTApibusinesspackageSaleusages
-      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | numeric | required | Paket id</li>\n</ul>\nİd si gönderilen paketin kullanım listesini döndürecek"
-      parameters: []
-      responses: {  }
-      tags:
-        - PackageSale
-      security: []
   /api/business/package-sale/create-packet:
     get:
       summary: 'GET api/business/package-sale/create-packet'
@@ -382,6 +457,26 @@ paths:
       tags:
         - PackageSale
       security: []
+  /api/business/package-sale/payments:
+    post:
+      summary: 'POST api/business/package-sale/payments'
+      operationId: pOSTApibusinesspackageSalepayments
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | numeric | required | Paket id</li>\n</ul>\nİd si gönderilen paketin ödemelerinin listesini döndürecek"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      security: []
+  /api/business/package-sale/usages:
+    post:
+      summary: 'POST api/business/package-sale/usages'
+      operationId: pOSTApibusinesspackageSaleusages
+      description: "<ul>\n<li>Bearer Token | string | required | Kullanıcı Token</li>\n<li>package_id | numeric | required | Paket id</li>\n</ul>\nİd si gönderilen paketin kullanım listesini döndürecek"
+      parameters: []
+      responses: {  }
+      tags:
+        - PackageSale
+      security: []
   /api/business/package-sale/add-packet:
     post:
       summary: 'POST api/business/package-sale/add-packet'
@@ -401,31 +496,31 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: alias
+                  example: fugiat
                 service_id:
                   type: string
                   description: ''
-                  example: et
+                  example: voluptate
                 amount:
                   type: string
                   description: ''
-                  example: fugiat
+                  example: cupiditate
                 total:
                   type: string
                   description: ''
-                  example: recusandae
+                  example: est
                 personel_id:
                   type: string
                   description: ''
-                  example: autem
+                  example: quia
                 package_type:
                   type: string
                   description: ''
-                  example: ipsam
+                  example: veniam
                 seller_date:
                   type: string
                   description: ''
-                  example: eligendi
+                  example: similique
               required:
                 - customer_id
                 - service_id
@@ -454,15 +549,15 @@ paths:
                 package_id:
                   type: string
                   description: ''
-                  example: soluta
+                  example: et
                 price:
                   type: string
                   description: ''
-                  example: natus
+                  example: ad
                 amount:
                   type: string
                   description: ''
-                  example: dolorum
+                  example: numquam
               required:
                 - package_id
                 - price
@@ -491,15 +586,15 @@ paths:
                 personel_id:
                   type: string
                   description: ''
-                  example: sint
+                  example: molestiae
                 amount:
                   type: string
                   description: ''
-                  example: aliquam
+                  example: voluptate
                 operation_date:
                   type: string
                   description: ''
-                  example: ut
+                  example: nulla
               required:
                 - package_id
                 - personel_id
@@ -547,7 +642,7 @@ paths:
                 cart_id:
                   type: string
                   description: 'value değeri 1 karakter değerinden büyük olmalıdır.'
-                  example: hejstfmnzqyzetrxwsivvmmqjjtycmtykygypegtqmdljiasluxblrlgmgysbqofvkmtmsajodzlxvwflqbnbjmr
+                  example: kbyfjmg
               required:
                 - cart_id
       security: []
@@ -667,11 +762,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: fugit
+                  example: quia
                 password:
                   type: string
                   description: ''
-                  example: '.,(9xCea4$'
+                  example: '$[<E\1Mb[jd'
               required:
                 - phone
                 - password
@@ -760,6 +855,9 @@ tags:
     description: ''
   -
     name: BusinessService
+    description: ''
+  -
+    name: Customer
     description: ''
   -
     name: DetailSetup

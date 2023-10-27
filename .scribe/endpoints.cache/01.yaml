@@ -35,7 +35,7 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: quis
+        example: delectus
         type: string
         enumValues: []
         custom: []
@@ -43,13 +43,13 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: 'X,\D"jY6*jw2Wj#sC:'
+        example: 'V]YkTXA'
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      phone: quis
-      password: 'X,\D"jY6*jw2Wj#sC:'
+      phone: delectus
+      password: 'V]YkTXA'
     fileParameters: []
     responses: []
     responseFields: []

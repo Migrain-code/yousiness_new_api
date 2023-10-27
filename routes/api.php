@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CityController;
-use \App\Http\Controllers\Api\OfficialCreditCardController;
 use App\Http\Controllers\Api\PaymentController;
 use \App\Http\Controllers\Api\DetailSetupController;
 use \App\Http\Controllers\Api\BusinessServiceController;
@@ -11,6 +10,8 @@ use \App\Http\Controllers\Api\PersonalController;
 use App\Http\Controllers\Api\AuthController;
 use \App\Http\Controllers\Api\SetupController;
 use \App\Http\Controllers\Api\PackageSaleController;
+use \App\Http\Controllers\Api\CustomerController;
+use \App\Http\Controllers\Api\BusinessPackageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,7 +34,7 @@ Route::prefix('business')->group(function (){
 
         Route::get('user', [AuthController::class, 'user']);
         Route::post('logout', [AuthController::class, 'logout']);
-
+        Route::get('/packages', [BusinessPackageController::class, 'index']);
         Route::controller(SetupController::class)->prefix('setup')->group(function (){
             Route::get('/get', 'get');
             Route::post('/update', 'update');
@@ -74,16 +75,21 @@ Route::prefix('business')->group(function (){
 
         Route::controller(PackageSaleController::class)->prefix('package-sale')->group(function (){
            Route::get('/', 'index');
+           Route::get('/create-packet', 'createPacket');
            Route::post('/payments', 'payments');
            Route::post('/usages', 'usages');
-
-           Route::get('/create-packet', 'createPacket');
            Route::post('/add-packet', 'addPacket');
            Route::post('/add-payment', 'addPayment');
            Route::post('/add-usage', 'addUsage');
-
         });
 
+        Route::controller(CustomerController::class)->prefix('customer')->group(function (){
+            Route::get('/', 'index');
+            Route::post('/create', 'create');
+            Route::post('/edit', 'edit');
+            Route::post('/update', 'update');
+            Route::post('/delete', 'destroy');
+        });
 
 
     });

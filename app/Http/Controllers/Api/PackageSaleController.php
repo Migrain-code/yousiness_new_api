@@ -150,7 +150,7 @@ class PackageSaleController extends Controller
         $translate_date = Carbon::parse($request->seller_date)->format('Y-m-d');
 
         $packageSale = new PackageSale();
-        $packageSale->business_id = $request->user()->id();
+        $packageSale->business_id = $request->user()->id;
         $packageSale->seller_date = $translate_date;
         $packageSale->customer_id = $request->input('customer_id');
         $packageSale->service_id = $request->input('service_id');

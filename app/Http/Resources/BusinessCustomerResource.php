@@ -14,6 +14,13 @@ class BusinessCustomerResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+          'id' => $this->id,
+          'name' => $this->name,
+          'phone' => $this->email,
+          'email' => $this->custom_email,
+          'image' => image($this->image),
+          'birthday' => $this->birthday,
+        ];
     }
 }

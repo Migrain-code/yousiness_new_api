@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "5f328447-553f-4c2a-b780-422804f1e164",
+        "_postman_id": "e15b42e5-c51d-4e4f-acc5-53bb03df2b39",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"quis\",\"password\":\"X,\\\\D\\\"jY6*jw2Wj#sC:\"}"
+                            "raw": "{\"phone\":\"delectus\",\"password\":\"V]YkTXA\"}"
                         },
                         "description": "Status Codes\n<ul>\n<li>phone<\/li>\n<li>password<\/li>\n<li> 401 Unauthorized Hatas\u0131 <\/li>\n<\/ul>\nLogin apisi",
                         "auth": {
@@ -379,6 +379,175 @@
             ]
         },
         {
+            "name": "Customer",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/business\/customer",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/business\/customer",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/business\/customer"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/business\/customer\/create",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/business\/customer\/create",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/business\/customer\/create"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"tbrbrilhdtdimqjhywyglfnxsdjhrievfealoswkajvxuifkjwuhnafucwwvzxfcsnuiwmaxnnekjrnhumidlml\",\"phone\":\"rchevdtxjavqntntspbilzzgsobiqjrvrqgdomxfrwpfojpcehyxmianqxsalqptzkgicqfkjiijdtgweqxqhhk\",\"email\":\"hessel.payton@example.net\",\"password\":\"IJ0]aEf\",\"gender\":\"est\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/business\/customer\/edit",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/business\/customer\/edit",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/business\/customer\/edit"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/business\/customer\/update",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/business\/customer\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/business\/customer\/update"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/business\/customer\/delete",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/business\/customer\/delete",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/business\/customer\/delete"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
             "name": "DetailSetup",
             "description": "",
             "item": [
@@ -452,7 +621,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"officialName\":\"ixsrhzktcqdttzmgzqhmvmnwn\",\"businessName\":\"khdliarbiyizfwweivzypte\",\"appointmentRange\":174.99,\"businessType\":23.868259,\"phone\":\"wsonnmnmboyymqefbecefcixgvgapazenkndkogmiaty\",\"startTime\":\"unde\",\"endTime\":\"sunt\",\"email\":\"mertz.abdullah@example.net\",\"year\":\"2023-10-22T20:06:19\",\"address\":\"in\",\"cityId\":9190.122,\"districtId\":37064655,\"commission\":108902.51990953,\"personalCount\":43.215,\"offDay\":724616554.9294858,\"aboutText\":\"eos\"}"
+                            "raw": "{\"officialName\":\"wxcaxknhkkwkzgtygeo\",\"businessName\":\"tpiedvesngtekul\",\"appointmentRange\":51162378,\"businessType\":30142.782659,\"phone\":\"esmwqjvkjepxgilhzgorjzthvqnqdbuknsyyfstzysxdnfsasxrajqihanuzpvbikpfrvamxwr\",\"startTime\":\"tempora\",\"endTime\":\"incidunt\",\"email\":\"boehm.zetta@example.com\",\"year\":\"2023-10-22T22:20:25\",\"address\":\"omnis\",\"cityId\":152.3,\"districtId\":441.8881,\"commission\":2.8271,\"personalCount\":48662.88514,\"offDay\":14292001.898069,\"aboutText\":\"amet\"}"
                         },
                         "description": "<ul>\n<li>Bearer Token<\/li>\n<li>officialName | string | required | Salon Sahibinin ad\u0131<\/li>\n<li>businessName | string | required | Salon Ad\u0131<\/li>\n<li>offDay | numeric | required | kapal\u0131 oldu\u011fu g\u00fcn\u00fcn id si <\/li>\n<li>businessType | numeric | required | i\u015fletme t\u00fcr\u00fc id'si <\/li>\n<li>cityId  | string | required | \u015eehir<\/li>\n<li>districtId  | string | required | \u0130l\u00e7e<\/li>\n<li>phone | string | required | \u0130\u015fletme Telefon Numaras\u0131<\/li>\n<li>email | string | required | \u0130\u015fletme E-posta Adresi<\/li>\n<li>commission | string | required | P. Kredi kart\u0131 kesintisi | \u00f6rne\u011fin (10, 20, 30,40)<\/li>\n<li>appointmentRange | string | required | Randevu aral\u0131\u011f\u0131 | \u00f6rne\u011fin (10, 20, 30,40)<\/li>\n<li>personalCount | string | required | Personel Say\u0131s\u0131 | \u00f6rne\u011fin (1, 3, 5,10)<\/li>\n<li>aboutText | string | required| \u0130\u015fletme Hakk\u0131nda Yaz\u0131s\u0131<\/li>\n<li>startTime | string | required| \u0130\u015fletme A\u00e7\u0131l\u0131\u015f Saati \u00d6rne\u011fin (12:08)<\/li>\n<li>endTime | string | required| \u0130\u015fletme Kapan\u0131\u015f Saati \u00d6rne\u011fin (18:08)<\/li>\n<li>year | date | required| Kurulu\u015f Tarihi \u00f6rne\u011fin (2023-04-01)<\/li>\n<li>address | text | required| Address Metni<\/li>\n<\/ul>\nDetayl\u0131 Kurulum Ekran\u0131 \u0130\u015fletme Bilgileri g\u00fcncelleme Apisi",
                         "auth": {
@@ -489,6 +658,54 @@
                         ],
                         "body": null,
                         "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<\/ul>\n\u0130\u015fletmenin paket sat\u0131\u015f\u0131 listesi sadece bu apiden d\u00f6nen verileri listede g\u00f6stermeniz yeterlidir.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/business\/package-sale\/create-packet",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/business\/package-sale\/create-packet",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/business\/package-sale\/create-packet"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<\/ul>\nBu point ile paket sat\u0131\u015f\u0131 olu\u015fturma sayfas\u0131n\u0131 a\u00e7t\u0131\u011f\u0131n\u0131zda ihtiyac\u0131n\u0131z olan t\u00fcm bilgiler size d\u00f6nd\u00fcr\u00fclecek",
                         "auth": {
                             "type": "noauth"
                         }
@@ -572,54 +789,6 @@
                     "response": []
                 },
                 {
-                    "name": "GET api\/business\/package-sale\/create-packet",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/business\/package-sale\/create-packet",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/business\/package-sale\/create-packet"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<\/ul>\nBu point ile paket sat\u0131\u015f\u0131 olu\u015fturma sayfas\u0131n\u0131 a\u00e7t\u0131\u011f\u0131n\u0131zda ihtiyac\u0131n\u0131z olan t\u00fcm bilgiler size d\u00f6nd\u00fcr\u00fclecek",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
                     "name": "POST api\/business\/package-sale\/add-packet",
                     "request": {
                         "url": {
@@ -641,7 +810,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"customer_id\":\"alias\",\"service_id\":\"et\",\"amount\":\"fugiat\",\"total\":\"recusandae\",\"personel_id\":\"autem\",\"package_type\":\"ipsam\",\"seller_date\":\"eligendi\"}"
+                            "raw": "{\"customer_id\":\"fugiat\",\"service_id\":\"voluptate\",\"amount\":\"cupiditate\",\"total\":\"est\",\"personel_id\":\"quia\",\"package_type\":\"veniam\",\"seller_date\":\"similique\"}"
                         },
                         "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<li>customer_id | string | required | M\u00fc\u015fteri Id'si<\/li>\n<li>service_id | string | required | Hizmet ID 'si<\/li>\n<li>amount | string | required | Adet, Paket Say\u0131s\u0131<\/li>\n<li>total | string | required | Toplam Fiyat, Fiyat<\/li>\n<li>personel_id | string | required | Personel ID'si<\/li>\n<li>package_type | string | required | Paket T\u00fcr\u00fc seans veya dakika<\/li>\n<li>seller_date | date | required | Paket Sat\u0131\u015f Tarihi \u00f6rnek (14.10.2023)<\/li>\n<\/ul>\nBu point ile paket sat\u0131\u015f\u0131 olu\u015fturma i\u015flemini ger\u00e7ekle\u015ftireceksiniz",
                         "auth": {
@@ -672,7 +841,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"package_id\":\"soluta\",\"price\":\"natus\",\"amount\":\"dolorum\"}"
+                            "raw": "{\"package_id\":\"et\",\"price\":\"ad\",\"amount\":\"numquam\"}"
                         },
                         "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<li>package_id | string | required | Paket Id'si<\/li>\n<li>price | string | required | \u00d6deme Yap\u0131lan Tutar<\/li>\n<li>amount | string | required | \u00d6deme Yap\u0131lan adet<\/li>\n<\/ul>\nBu point ile pakete \u00f6deme eklemi i\u015flemini ger\u00e7ekle\u015ftireceksiniz",
                         "auth": {
@@ -703,7 +872,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"package_id\":\"voluptatem\",\"personel_id\":\"sint\",\"amount\":\"aliquam\",\"operation_date\":\"ut\"}"
+                            "raw": "{\"package_id\":\"voluptatem\",\"personel_id\":\"molestiae\",\"amount\":\"voluptate\",\"operation_date\":\"nulla\"}"
                         },
                         "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<li>package_id | string | required | Paket Id'si<\/li>\n<li>personel_id | string | required | Kullan\u0131m\u0131 yapan personel Id'si<\/li>\n<li>amount | string | required | Kullan\u0131lan adet<\/li>\n<li>operation_date | string | required | \u0130\u015flemin yap\u0131ld\u0131\u011f\u0131 tarih \u00f6rn (19.10.2023 19:56:11)<\/li>\n<\/ul>\nBu point ile pakete \u00f6deme eklemi i\u015flemini ger\u00e7ekle\u015ftireceksiniz",
                         "auth": {
@@ -788,7 +957,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"cart_id\":\"hejstfmnzqyzetrxwsivvmmqjjtycmtykygypegtqmdljiasluxblrlgmgysbqofvkmtmsajodzlxvwflqbnbjmr\"}"
+                            "raw": "{\"cart_id\":\"kbyfjmg\"}"
                         },
                         "description": "<ul>\n<li>Bearer Token | string | required | Kullan\u0131c\u0131 Token<\/li>\n<li>cart_id | numeric | required | Se\u00e7ilen Kart Bilgisi<\/li>\n<\/ul>\nKullan\u0131c\u0131n\u0131 i\u015fletmesinin packet bilgisi ve kullan\u0131c\u0131n\u0131n cartlar\u0131",
                         "auth": {
@@ -1011,7 +1180,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"fugit\",\"password\":\".,(9xCea4$\"}"
+                            "raw": "{\"phone\":\"quia\",\"password\":\"$[<E\\\\1Mb[jd\"}"
                         },
                         "description": "Status Codes\n<ul>\n<li>phone<\/li>\n<li>password<\/li>\n<li> 401 Unauthorized Hatas\u0131 <\/li>\n<\/ul>\nLogin apisi",
                         "auth": {

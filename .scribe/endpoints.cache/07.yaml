@@ -48,6 +48,49 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - GET
+    uri: api/business/package-sale/create-packet
+    metadata:
+      groupName: PackageSale
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'GET api/business/package-sale/create-packet'
+      description: |-
+        <ul>
+        <li>Bearer Token | string | required | Kullanıcı Token</li>
+        </ul>
+        Bu point ile paket satışı oluşturma sayfasını açtığınızda ihtiyacınız olan tüm bilgiler size döndürülecek
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - POST
     uri: api/business/package-sale/payments
     metadata:
@@ -118,49 +161,6 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: api/business/package-sale/create-packet
-    metadata:
-      groupName: PackageSale
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'GET api/business/package-sale/create-packet'
-      description: |-
-        <ul>
-        <li>Bearer Token | string | required | Kullanıcı Token</li>
-        </ul>
-        Bu point ile paket satışı oluşturma sayfasını açtığınızda ihtiyacınız olan tüm bilgiler size döndürülecek
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - POST
     uri: api/business/package-sale/add-packet
     metadata:
@@ -195,7 +195,7 @@ endpoints:
         name: customer_id
         description: ''
         required: true
-        example: alias
+        example: fugiat
         type: string
         enumValues: []
         custom: []
@@ -203,7 +203,7 @@ endpoints:
         name: service_id
         description: ''
         required: true
-        example: et
+        example: voluptate
         type: string
         enumValues: []
         custom: []
@@ -211,7 +211,7 @@ endpoints:
         name: amount
         description: ''
         required: true
-        example: fugiat
+        example: cupiditate
         type: string
         enumValues: []
         custom: []
@@ -219,7 +219,7 @@ endpoints:
         name: total
         description: ''
         required: true
-        example: recusandae
+        example: est
         type: string
         enumValues: []
         custom: []
@@ -227,7 +227,7 @@ endpoints:
         name: personel_id
         description: ''
         required: true
-        example: autem
+        example: quia
         type: string
         enumValues: []
         custom: []
@@ -235,7 +235,7 @@ endpoints:
         name: package_type
         description: ''
         required: true
-        example: ipsam
+        example: veniam
         type: string
         enumValues: []
         custom: []
@@ -243,18 +243,18 @@ endpoints:
         name: seller_date
         description: ''
         required: true
-        example: eligendi
+        example: similique
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      customer_id: alias
-      service_id: et
-      amount: fugiat
-      total: recusandae
-      personel_id: autem
-      package_type: ipsam
-      seller_date: eligendi
+      customer_id: fugiat
+      service_id: voluptate
+      amount: cupiditate
+      total: est
+      personel_id: quia
+      package_type: veniam
+      seller_date: similique
     fileParameters: []
     responses: []
     responseFields: []
@@ -295,7 +295,7 @@ endpoints:
         name: package_id
         description: ''
         required: true
-        example: soluta
+        example: et
         type: string
         enumValues: []
         custom: []
@@ -303,7 +303,7 @@ endpoints:
         name: price
         description: ''
         required: true
-        example: natus
+        example: ad
         type: string
         enumValues: []
         custom: []
@@ -311,14 +311,14 @@ endpoints:
         name: amount
         description: ''
         required: true
-        example: dolorum
+        example: numquam
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      package_id: soluta
-      price: natus
-      amount: dolorum
+      package_id: et
+      price: ad
+      amount: numquam
     fileParameters: []
     responses: []
     responseFields: []
@@ -368,7 +368,7 @@ endpoints:
         name: personel_id
         description: ''
         required: true
-        example: sint
+        example: molestiae
         type: string
         enumValues: []
         custom: []
@@ -376,7 +376,7 @@ endpoints:
         name: amount
         description: ''
         required: true
-        example: aliquam
+        example: voluptate
         type: string
         enumValues: []
         custom: []
@@ -384,15 +384,15 @@ endpoints:
         name: operation_date
         description: ''
         required: true
-        example: ut
+        example: nulla
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
       package_id: voluptatem
-      personel_id: sint
-      amount: aliquam
-      operation_date: ut
+      personel_id: molestiae
+      amount: voluptate
+      operation_date: nulla
     fileParameters: []
     responses: []
     responseFields: []
