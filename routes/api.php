@@ -25,10 +25,8 @@ use \App\Http\Controllers\Api\PersonalAuthController;
 |
 */
 
-Route::prefix('city')->group(function (){
-    Route::get('list', [CityController::class, 'index']);
-    Route::post('get', [CityController::class, 'get']);
-});
+Route::get('city/list', [CityController::class, 'list']);
+Route::post('city/search', [CityController::class, 'search']);
 
 Route::prefix('business')->group(function (){
     Route::prefix('auth')->group(function () {

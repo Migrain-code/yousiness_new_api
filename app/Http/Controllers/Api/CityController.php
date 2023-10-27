@@ -7,15 +7,22 @@ use App\Models\City;
 use Illuminate\Http\Request;
 
 /**
- * @group City
  *
+ * @group City
  * */
 class CityController extends Controller
 {
+    /**
+     * POST api/city/search
+     *
+     * Şehir arama apisi sadeece city_name göndermeniz yeterli
+     *
+     *
+     */
     public function search(Request $request)
     {
-        $cities = \App\Models\City::where('name', 'like', '%' . $request->q . '%')
-            ->orWhere('post_code', 'like', '%' . $request->q . '%')
+        $cities = City::where('name', 'like', '%' . $request->city_name . '%')
+            ->orWhere('post_code', 'like', '%' . $request->city_name . '%')
             ->take(50)
             ->get();
 
@@ -24,6 +31,13 @@ class CityController extends Controller
         ]);
     }
 
+    /**
+     * POST api/city/list
+     *
+     * Şehir listesi
+     *
+     *
+     */
     public function list()
     {
         return response()->json([
