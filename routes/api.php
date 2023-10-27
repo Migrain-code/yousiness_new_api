@@ -12,6 +12,8 @@ use \App\Http\Controllers\Api\SetupController;
 use \App\Http\Controllers\Api\PackageSaleController;
 use \App\Http\Controllers\Api\CustomerController;
 use \App\Http\Controllers\Api\BusinessPackageController;
+use \App\Http\Controllers\Api\PersonalAuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +25,7 @@ use \App\Http\Controllers\Api\BusinessPackageController;
 |
 */
 require_once "guards/personal.php";
+
 Route::prefix('business')->group(function (){
     Route::prefix('auth')->group(function () {
         Route::post('login', [AuthController::class, 'login']);
@@ -94,6 +97,17 @@ Route::prefix('business')->group(function (){
 
     });
 
+});
+
+Route::prefix('personal')->group(function () {
+    Route::prefix('auth')->group(function (){
+        Route::post('login', [PersonalAuthController::class, 'login']);
+    });
+
+    Route::middleware('auth:personal')->group(function () {
+        Route::get('user', [PersonalAuthController::class, 'user']);
+        Route::post('logout', [PersonalAuthController::class, 'logout']);
+    });
 });
 
 
