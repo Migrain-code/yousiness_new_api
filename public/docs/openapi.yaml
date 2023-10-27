@@ -26,11 +26,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: delectus
+                  example: ab
                 password:
                   type: string
                   description: ''
-                  example: 'V]YkTXA'
+                  example: '~fKyQ^P/9:U'
               required:
                 - phone
                 - password
@@ -239,23 +239,23 @@ paths:
                 name:
                   type: string
                   description: 'value değeri 3 karakter değerinden büyük olmalıdır.'
-                  example: tbrbrilhdtdimqjhywyglfnxsdjhrievfealoswkajvxuifkjwuhnafucwwvzxfcsnuiwmaxnnekjrnhumidlml
+                  example: qrdjsjocraddhfrljtsmezzuoqrcyffg
                 phone:
                   type: string
                   description: 'value değeri 10 karakter değerinden büyük olmalıdır.'
-                  example: rchevdtxjavqntntspbilzzgsobiqjrvrqgdomxfrwpfojpcehyxmianqxsalqptzkgicqfkjiijdtgweqxqhhk
+                  example: frzdkascsywmsvekmvnixsqyxqrkplfcbkmfev
                 email:
                   type: string
                   description: 'value değeri 8 karakter değerinden büyük olmalıdır.'
-                  example: hessel.payton@example.net
+                  example: qquigley@example.net
                 password:
                   type: string
                   description: 'value değeri 8 karakter değerinden büyük olmalıdır.'
-                  example: 'IJ0]aEf'
+                  example: +NHFhmZrL
                 gender:
                   type: string
                   description: ''
-                  example: est
+                  example: quisquam
               required:
                 - name
                 - phone
@@ -334,67 +334,67 @@ paths:
                 officialName:
                   type: string
                   description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
-                  example: wxcaxknhkkwkzgtygeo
+                  example: qqlhgrnrxahslicgachfdtgqp
                 businessName:
                   type: string
                   description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
-                  example: tpiedvesngtekul
+                  example: gsqebvefeshqs
                 appointmentRange:
                   type: number
                   description: ''
-                  example: 51162378.0
+                  example: 3.0
                 businessType:
                   type: number
                   description: ''
-                  example: 30142.782659
+                  example: 58636622.58
                 phone:
                   type: string
                   description: 'value değeri 11 karakter değerinden büyük olmalıdır.'
-                  example: esmwqjvkjepxgilhzgorjzthvqnqdbuknsyyfstzysxdnfsasxrajqihanuzpvbikpfrvamxwr
+                  example: bntwwmnlyoedsxzzmrkfvtuu
                 startTime:
                   type: string
                   description: ''
-                  example: tempora
+                  example: qui
                 endTime:
                   type: string
                   description: ''
-                  example: incidunt
+                  example: quas
                 email:
                   type: string
                   description: ''
-                  example: boehm.zetta@example.com
+                  example: pauline52@example.org
                 year:
                   type: string
                   description: 'value geçerli bir tarih olmalıdır.'
-                  example: '2023-10-22T22:20:25'
+                  example: '2023-10-27T22:35:14'
                 address:
                   type: string
                   description: ''
-                  example: omnis
+                  example: impedit
                 cityId:
                   type: number
                   description: ''
-                  example: 152.3
+                  example: 25012809.485446
                 districtId:
                   type: number
                   description: ''
-                  example: 441.8881
+                  example: 82419.79733074
                 commission:
                   type: number
                   description: ''
-                  example: 2.8271
+                  example: 10.0
                 personalCount:
                   type: number
                   description: ''
-                  example: 48662.88514
+                  example: 50.931
                 offDay:
                   type: number
                   description: ''
-                  example: 14292001.898069
+                  example: 103927688.648
                 aboutText:
                   type: string
                   description: ''
-                  example: amet
+                  example: quasi
               required:
                 - officialName
                 - businessName
@@ -496,31 +496,31 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: fugiat
+                  example: vitae
                 service_id:
                   type: string
                   description: ''
-                  example: voluptate
+                  example: magnam
                 amount:
                   type: string
                   description: ''
-                  example: cupiditate
+                  example: sunt
                 total:
                   type: string
                   description: ''
-                  example: est
+                  example: et
                 personel_id:
                   type: string
                   description: ''
-                  example: quia
+                  example: cumque
                 package_type:
                   type: string
                   description: ''
-                  example: veniam
+                  example: voluptatem
                 seller_date:
                   type: string
                   description: ''
-                  example: similique
+                  example: et
               required:
                 - customer_id
                 - service_id
@@ -549,15 +549,15 @@ paths:
                 package_id:
                   type: string
                   description: ''
-                  example: et
+                  example: eius
                 price:
                   type: string
                   description: ''
-                  example: ad
+                  example: maxime
                 amount:
                   type: string
                   description: ''
-                  example: numquam
+                  example: iusto
               required:
                 - package_id
                 - price
@@ -582,24 +582,46 @@ paths:
                 package_id:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: ut
                 personel_id:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: voluptas
                 amount:
                   type: string
                   description: ''
-                  example: voluptate
+                  example: cum
                 operation_date:
                   type: string
                   description: ''
-                  example: nulla
+                  example: qui
               required:
                 - package_id
                 - personel_id
                 - amount
                 - operation_date
+      security: []
+  /api/business/packages:
+    get:
+      summary: ''
+      operationId: getApiBusinessPackages
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Packages
       security: []
   /api/business/payment:
     get:
@@ -642,7 +664,7 @@ paths:
                 cart_id:
                   type: string
                   description: 'value değeri 1 karakter değerinden büyük olmalıdır.'
-                  example: kbyfjmg
+                  example: kbrtsggkjshjevfkwjbpegkalfercklfdwbdxjcdxtvpitipqucdbhtezpwakrdvvfornfguwpnwocxjzr
               required:
                 - cart_id
       security: []
@@ -762,11 +784,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: quia
+                  example: in
                 password:
                   type: string
                   description: ''
-                  example: '$[<E\1Mb[jd'
+                  example: '%:DL{,1^'
               required:
                 - phone
                 - password
@@ -864,6 +886,9 @@ tags:
     description: ''
   -
     name: PackageSale
+    description: ''
+  -
+    name: Packages
     description: ''
   -
     name: Payment

@@ -85,7 +85,7 @@ endpoints:
         name: officialName
         description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
         required: true
-        example: wxcaxknhkkwkzgtygeo
+        example: qqlhgrnrxahslicgachfdtgqp
         type: string
         enumValues: []
         custom: []
@@ -93,7 +93,7 @@ endpoints:
         name: businessName
         description: 'value değeri 255 karakter değerinden küçük olmalıdır.'
         required: true
-        example: tpiedvesngtekul
+        example: gsqebvefeshqs
         type: string
         enumValues: []
         custom: []
@@ -101,7 +101,7 @@ endpoints:
         name: appointmentRange
         description: ''
         required: true
-        example: 51162378.0
+        example: 3.0
         type: number
         enumValues: []
         custom: []
@@ -109,7 +109,7 @@ endpoints:
         name: businessType
         description: ''
         required: true
-        example: 30142.782659
+        example: 58636622.58
         type: number
         enumValues: []
         custom: []
@@ -117,7 +117,7 @@ endpoints:
         name: phone
         description: 'value değeri 11 karakter değerinden büyük olmalıdır.'
         required: true
-        example: esmwqjvkjepxgilhzgorjzthvqnqdbuknsyyfstzysxdnfsasxrajqihanuzpvbikpfrvamxwr
+        example: bntwwmnlyoedsxzzmrkfvtuu
         type: string
         enumValues: []
         custom: []
@@ -125,7 +125,7 @@ endpoints:
         name: startTime
         description: ''
         required: true
-        example: tempora
+        example: qui
         type: string
         enumValues: []
         custom: []
@@ -133,7 +133,7 @@ endpoints:
         name: endTime
         description: ''
         required: true
-        example: incidunt
+        example: quas
         type: string
         enumValues: []
         custom: []
@@ -141,7 +141,7 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: boehm.zetta@example.com
+        example: pauline52@example.org
         type: string
         enumValues: []
         custom: []
@@ -149,7 +149,7 @@ endpoints:
         name: year
         description: 'value geçerli bir tarih olmalıdır.'
         required: true
-        example: '2023-10-22T22:20:25'
+        example: '2023-10-27T22:35:14'
         type: string
         enumValues: []
         custom: []
@@ -157,7 +157,7 @@ endpoints:
         name: address
         description: ''
         required: true
-        example: omnis
+        example: impedit
         type: string
         enumValues: []
         custom: []
@@ -165,7 +165,7 @@ endpoints:
         name: cityId
         description: ''
         required: true
-        example: 152.3
+        example: 25012809.485446
         type: number
         enumValues: []
         custom: []
@@ -173,7 +173,7 @@ endpoints:
         name: districtId
         description: ''
         required: true
-        example: 441.8881
+        example: 82419.79733074
         type: number
         enumValues: []
         custom: []
@@ -181,7 +181,7 @@ endpoints:
         name: commission
         description: ''
         required: true
-        example: 2.8271
+        example: 10.0
         type: number
         enumValues: []
         custom: []
@@ -189,7 +189,7 @@ endpoints:
         name: personalCount
         description: ''
         required: true
-        example: 48662.88514
+        example: 50.931
         type: number
         enumValues: []
         custom: []
@@ -197,7 +197,7 @@ endpoints:
         name: offDay
         description: ''
         required: true
-        example: 14292001.898069
+        example: 103927688.648
         type: number
         enumValues: []
         custom: []
@@ -205,27 +205,27 @@ endpoints:
         name: aboutText
         description: ''
         required: true
-        example: amet
+        example: quasi
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      officialName: wxcaxknhkkwkzgtygeo
-      businessName: tpiedvesngtekul
-      appointmentRange: 51162378.0
-      businessType: 30142.782659
-      phone: esmwqjvkjepxgilhzgorjzthvqnqdbuknsyyfstzysxdnfsasxrajqihanuzpvbikpfrvamxwr
-      startTime: tempora
-      endTime: incidunt
-      email: boehm.zetta@example.com
-      year: '2023-10-22T22:20:25'
-      address: omnis
-      cityId: 152.3
-      districtId: 441.8881
-      commission: 2.8271
-      personalCount: 48662.88514
-      offDay: 14292001.898069
-      aboutText: amet
+      officialName: qqlhgrnrxahslicgachfdtgqp
+      businessName: gsqebvefeshqs
+      appointmentRange: 3.0
+      businessType: 58636622.58
+      phone: bntwwmnlyoedsxzzmrkfvtuu
+      startTime: qui
+      endTime: quas
+      email: pauline52@example.org
+      year: '2023-10-27T22:35:14'
+      address: impedit
+      cityId: 25012809.485446
+      districtId: 82419.79733074
+      commission: 10.0
+      personalCount: 50.931
+      offDay: 103927688.648
+      aboutText: quasi
     fileParameters: []
     responses: []
     responseFields: []

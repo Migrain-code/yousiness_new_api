@@ -24,7 +24,11 @@ use \App\Http\Controllers\Api\PersonalAuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-require_once "guards/personal.php";
+
+Route::prefix('city')->group(function (){
+    Route::get('list', [CityController::class, 'index']);
+    Route::post('get', [CityController::class, 'get']);
+});
 
 Route::prefix('business')->group(function (){
     Route::prefix('auth')->group(function () {
@@ -111,8 +115,5 @@ Route::prefix('personal')->group(function () {
 });
 
 
-Route::prefix('city')->group(function (){
-    Route::get('list', [CityController::class, 'index']);
-    Route::post('get', [CityController::class, 'get']);
-});
+
 

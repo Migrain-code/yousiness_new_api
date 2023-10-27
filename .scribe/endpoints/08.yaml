@@ -65,7 +65,7 @@ endpoints:
         name: name
         description: 'value değeri 3 karakter değerinden büyük olmalıdır.'
         required: true
-        example: tbrbrilhdtdimqjhywyglfnxsdjhrievfealoswkajvxuifkjwuhnafucwwvzxfcsnuiwmaxnnekjrnhumidlml
+        example: qrdjsjocraddhfrljtsmezzuoqrcyffg
         type: string
         enumValues: []
         custom: []
@@ -73,7 +73,7 @@ endpoints:
         name: phone
         description: 'value değeri 10 karakter değerinden büyük olmalıdır.'
         required: true
-        example: rchevdtxjavqntntspbilzzgsobiqjrvrqgdomxfrwpfojpcehyxmianqxsalqptzkgicqfkjiijdtgweqxqhhk
+        example: frzdkascsywmsvekmvnixsqyxqrkplfcbkmfev
         type: string
         enumValues: []
         custom: []
@@ -81,7 +81,7 @@ endpoints:
         name: email
         description: 'value değeri 8 karakter değerinden büyük olmalıdır.'
         required: true
-        example: hessel.payton@example.net
+        example: qquigley@example.net
         type: string
         enumValues: []
         custom: []
@@ -89,7 +89,7 @@ endpoints:
         name: password
         description: 'value değeri 8 karakter değerinden büyük olmalıdır.'
         required: true
-        example: 'IJ0]aEf'
+        example: +NHFhmZrL
         type: string
         enumValues: []
         custom: []
@@ -97,16 +97,16 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: est
+        example: quisquam
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      name: tbrbrilhdtdimqjhywyglfnxsdjhrievfealoswkajvxuifkjwuhnafucwwvzxfcsnuiwmaxnnekjrnhumidlml
-      phone: rchevdtxjavqntntspbilzzgsobiqjrvrqgdomxfrwpfojpcehyxmianqxsalqptzkgicqfkjiijdtgweqxqhhk
-      email: hessel.payton@example.net
-      password: 'IJ0]aEf'
-      gender: est
+      name: qrdjsjocraddhfrljtsmezzuoqrcyffg
+      phone: frzdkascsywmsvekmvnixsqyxqrkplfcbkmfev
+      email: qquigley@example.net
+      password: +NHFhmZrL
+      gender: quisquam
     fileParameters: []
     responses: []
     responseFields: []
