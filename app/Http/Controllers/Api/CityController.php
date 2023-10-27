@@ -41,7 +41,7 @@ class CityController extends Controller
     public function list()
     {
         return response()->json([
-           'cities' => City::all(),
+           'cities' => City::where('name', '<>', '')->get()->take(10),
         ]);
     }
 }
