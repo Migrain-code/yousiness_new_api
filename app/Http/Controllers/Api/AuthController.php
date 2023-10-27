@@ -172,7 +172,7 @@ class AuthController extends Controller
                 }
                 else{
                     return response()->json([
-                        'status' => "success",
+                        'status' => "danger",
                         'message' => "Doğrulama Kodu Hatalı veya Yanlış Tuşladınız."
                     ]);
                 }
